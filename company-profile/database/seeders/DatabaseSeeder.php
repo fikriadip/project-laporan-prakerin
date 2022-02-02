@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Faker\Factory as Faker;
+use App\Models\User;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +18,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::create([
+            'name' => 'Admin Bimbel',
+            'email' => 'adminbimbel@primago.com',
+            'password' => Hash::make('admin123'),
+            'created_at' => Carbon::now()
+        ]);
     }
 }
