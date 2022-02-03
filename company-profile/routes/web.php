@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 })->name('index');
 
 // Route::get('/admin/login', function () {
