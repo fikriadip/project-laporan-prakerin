@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title_web')</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    {{-- <link href="{{asset('template_masyarakat/assets/img/favicon.png')}}" rel="icon"> --}}
+    <link rel="icon" href="{{ asset('template_login/img/favicon.png') }}" />
 	
     <!-- Fonts and icons -->
     <script src="{{asset('template_admin/assets/js/plugin/webfont/webfont.min.js')}}"></script>

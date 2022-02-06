@@ -34,7 +34,7 @@
 		                    </a>
 		                </li>
 
-		                {{-- <li class="nav-section">
+		                <li class="nav-section">
 		                    <span class="sidebar-mini-icon">
 		                        <i class="fa fa-ellipsis-h"></i>
 		                    </span>
@@ -42,14 +42,14 @@
 		                </li>
 
 		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'data.masyarakat' ) || Route::currentRouteNamed( 'edit.masyarakat' ) ?  'active' : '' }}">
-		                    <a href="{{route('data.masyarakat')}}">
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.home' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.home')}}">
 		                        <i class="fas fa-users"></i>
-		                        <p>Data Masyarakat</p>
+		                        <p>Data Home</p>
 		                    </a>
 		                </li>
 
-		                <li
+		                {{-- <li
 		                    class="nav-item {{ Route::currentRouteNamed( 'data.petugas' ) || Route::currentRouteNamed( 'petugas.tambah' ) || Route::currentRouteNamed( 'edit.petugas' ) ?  'active' : '' }}">
 		                    <a href="{{route('data.petugas')}}">
 		                        <i class="fas fa-user-tie"></i>
@@ -117,7 +117,7 @@
 		                        <i class="fas fa-comments"></i>
 		                        <p>Umpan Balik Masyarakat</p>
 		                    </a>
-		                </li> --}}
+		                </li>  --}}
 		            </ul>
 
 		        </div>
