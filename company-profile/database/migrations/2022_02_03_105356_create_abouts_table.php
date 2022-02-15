@@ -16,7 +16,7 @@ class CreateAboutsTable extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('subjudul');
+            $table->text('subjudul');
             $table->text('link_youtube');
             $table->timestamps();
         });

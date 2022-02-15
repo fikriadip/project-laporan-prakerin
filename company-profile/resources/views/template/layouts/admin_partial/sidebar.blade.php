@@ -44,80 +44,66 @@
 		                <li
 		                    class="nav-item {{ Route::currentRouteNamed( 'data.home' ) ?  'active' : '' }}">
 		                    <a href="{{route('data.home')}}">
-		                        <i class="fas fa-users"></i>
-		                        <p>Data Home</p>
+		                        <i class="fas fa-home"></i>
+		                        <p>Manage Home</p>
 		                    </a>
 		                </li>
 
-		                {{-- <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'data.petugas' ) || Route::currentRouteNamed( 'petugas.tambah' ) || Route::currentRouteNamed( 'edit.petugas' ) ?  'active' : '' }}">
-		                    <a href="{{route('data.petugas')}}">
+		                <li
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.about' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.about')}}">
 		                        <i class="fas fa-user-tie"></i>
-		                        <p>Data Petugas</p>
+		                        <p>Manage About</p>
+		                    </a>
+		                </li>
+		                
+						<li
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.deskripsi.about' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.deskripsi.about')}}">
+		                        <i class="fas fa-user-tie"></i>
+		                        <p>Manage Deskripsi About</p>
+		                    </a>
+		                </li>
+						
+						<li
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.details' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.details')}}">
+		                        <i class="fas fa-user-tie"></i>
+		                        <p>Manage Details</p>
 		                    </a>
 		                </li>
 
 		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'petugas.berita.index' ) || Route::currentRouteNamed( 'detail.petugas.berita' ) ?  'active' : '' }}">
-		                    <a href="{{route('petugas.berita.index')}}">
-		                        <i class="fas fa-newspaper"></i>
-		                        <p>Data Berita</p>
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.team' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.team')}}">
+		                        <i class="fas fa-user-tie"></i>
+		                        <p>Manage Teams</p>
 		                    </a>
 		                </li>
-
-		                <li class="nav-section">
-		                    <span class="sidebar-mini-icon">
-		                        <i class="fa fa-ellipsis-h"></i>
-		                    </span>
-		                    <h4 class="text-section">Main</h4>
-		                </li>
-
-		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'data.pengaduan' ) ||  Route::currentRouteNamed( 'getEntri' ) || Route::currentRouteNamed( 'show.pengaduan' ) ?  'active' : '' }}">
-		                    <a href="{{route('data.pengaduan')}}">
-		                        <i class="fas fa-inbox"></i>
-		                        <p>Verifikasi Laporan</p>
+		                
+						<li
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.pricing' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.pricing')}}">
+		                        <i class="fas fa-user-tie"></i>
+		                        <p>Manage Pricing</p>
 		                    </a>
 		                </li>
-
-		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'petugas.berita.index' ) || Route::currentRouteNamed( 'petugas.berita.create' ) || Route::currentRouteNamed( 'detail.petugas.berita' ) || Route::currentRouteNamed( 'edit.petugas.berita' ) ?  'active' : '' }}">
-		                    <a href="{{route('petugas.berita.index')}}">
-		                        <i class="fas fa-newspaper"></i>
-		                        <p>Data Berita</p>
+						
+						<li
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.faq' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.faq')}}">
+		                        <i class="fas fa-user-tie"></i>
+		                        <p>Manage Faq</p>
 		                    </a>
 		                </li>
-
-		                <li class="nav-section">
-		                    <span class="sidebar-mini-icon">
-		                        <i class="fa fa-ellipsis-h"></i>
-		                    </span>
-		                    <h4 class="text-section">Masyarakat</h4>
-		                </li>
-
-		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'laporan.pengaduan' ) || Route::currentRouteNamed( 'laporan.pengaduan.detail' ) ?  'active' : '' }}">
-		                    <a href="{{route('laporan.pengaduan')}}">
-		                        <i class="fas fa-file-alt"></i>
-		                        <p>Laporan Pengaduan</p>
+						
+						<li
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.contact' ) ?  'active' : '' }}">
+		                    <a href="{{route('data.contact')}}">
+		                        <i class="fas fa-user-tie"></i>
+		                        <p>Manage Contact</p>
 		                    </a>
 		                </li>
-
-		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'laporan.masyarakat' ) || Route::currentRouteNamed( 'laporan.masyarakat.detail' ) ?  'active' : '' }}">
-		                    <a href="{{route('laporan.masyarakat')}}">
-		                        <i class="fas fa-user-friends"></i>
-		                        <p>Laporan Masyarakat</p>
-		                    </a>
-		                </li>
-
-		                <li
-		                    class="nav-item {{ Route::currentRouteNamed( 'laporan.masyarakat.feedback' ) || Route::currentRouteNamed( 'laporan.masyarakat.detail' ) ?  'active' : '' }}">
-		                    <a href="{{route('laporan.masyarakat.feedback')}}">
-		                        <i class="fas fa-comments"></i>
-		                        <p>Umpan Balik Masyarakat</p>
-		                    </a>
-		                </li>  --}}
 		            </ul>
 
 		        </div>

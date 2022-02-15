@@ -5,22 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Models\Home;
+use App\Models\Detail;
 use DataTables;
 
-class HomeController extends Controller
+class DetailsController extends Controller
 {
     public function index()
     {
-        return view('admin.home.index');
+        return view('admin.details.index');
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'judul'=>'required|min:20|max:40',
-            'subjudul'=>'required|min:8|max:16',
-            'deskripsi'=>'required|min:20',
+            'judul'=>'required|min:40|max:130',
+            'subjudul'=>'required|min:40|max:320',
+            'penjelasan1'=>'required|min:40|max:80 ',
+            'penjelasan2'=>'required|min:40|max:80',
+            'penjelasan3'=>'required|min:40|max:80',
+            'penjelasan4'=>'required|min:40|max:80',
+            'paragraf'=>'required|min:40|max:320',
             'image' => 'required|image|max:2048|mimes:jpg,png,jpeg,svg',
         ],[
             'required' => ':attribute Tidak Boleh Kosong',
@@ -38,15 +42,19 @@ class HomeController extends Controller
             $image = $request->file('image');
             $new_image= base64_encode(file_get_contents($request->image));
 
-             $home = Home::create([
+             $details = Detail::create([
                 'judul' => $request->judul,
                 'subjudul' => $request->subjudul,
-                'deskripsi' => $request->deskripsi,
+                'penjelasan1' => $request->penjelasan1,
+                'penjelasan2' => $request->penjelasan2,
+                'penjelasan3' => $request->penjelasan3,
+                'penjelasan4' => $request->penjelasan4,
+                'paragraf' => $request->paragraf,
                 'image' => $new_image,
             ]);
         }
 
-           if($home){
+           if($details){
                return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Ditambahkan']);
             }else{
                return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Gagal Menambahkan Data Home']);
@@ -58,11 +66,11 @@ class HomeController extends Controller
     public function ajax(Request $request)
 {
     if ($request->ajax()) {
-        $tableHome = Home::all();
-    return DataTables::of($tableHome)
+        $tableDetails = Detail::all();
+    return DataTables::of($tableDetails)
             ->addIndexColumn()
             ->addColumn('image', function($row){
-                return '<img src='."data:image/" . $row->imageType . ";base64," . $row->image.' width="190px" class="shadow-sm rounded m-2" loading="lazy">';
+                return '<img src='."data:image/" . $row->imageType . ";base64," . $row->image.' width="190px" class="text-center shadow-sm rounded m-2" loading="lazy">';
               })
             ->addColumn('action', function($row){
                 $table = '<center>';
@@ -72,8 +80,8 @@ class HomeController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editHomeBtn" style="font-size: 16px;" title="Edit Data Home"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deleteHomeBtn" style="font-size: 16px;" title="Delete Home"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editDetailsBtn" style="font-size: 16px;" title="Edit Data Home"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deleteDetailsBtn" style="font-size: 16px;" title="Delete Home"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -87,21 +95,25 @@ class HomeController extends Controller
 
 }
 
-public function editHome(Request $request){
-    $home_id = $request->home_id;
-    $homeEdit = Home::find($home_id);
-    return response()->json(['details'=>$homeEdit]);
+public function editDetails(Request $request){
+    $details_id = $request->details_id;
+    $detailsEdit = Detail::find($details_id);
+    return response()->json(['details'=>$detailsEdit]);
 }
 
 
-public function updateHome(Request $request)
+public function updateDetails(Request $request)
 {
-    $home_id = $request->home_id;
+    $details_id = $request->details_id;
 
     $validator = Validator::make($request->all(),[
-        'judul'=>'required|min:20|max:40',
-        'subjudul'=>'required|min:8|max:16',
-        'deskripsi'=>'required|min:20',
+        'judul'=>'required|min:40|max:130',
+        'subjudul'=>'required|min:40|max:320',
+        'penjelasan1'=>'required|min:40|max:80 ',
+        'penjelasan2'=>'required|min:40|max:80',
+        'penjelasan3'=>'required|min:40|max:80',
+        'penjelasan4'=>'required|min:40|max:80',
+        'paragraf'=>'required|min:40|max:320',
     ],[
         'required' => ':attribute Tidak Boleh Kosong',
         'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
@@ -115,10 +127,14 @@ public function updateHome(Request $request)
 
     if($request->file('image') == "") {
 
-        $home = Home::find($home_id)->update([
+        $details = Detail::find($details_id)->update([
             'judul' => $request->judul,
-            'subjudul' => $request->subjudul,
-            'deskripsi' => $request->deskripsi,
+                'subjudul' => $request->subjudul,
+                'penjelasan1' => $request->penjelasan1,
+                'penjelasan2' => $request->penjelasan2,
+                'penjelasan3' => $request->penjelasan3,
+                'penjelasan4' => $request->penjelasan4,
+                'paragraf' => $request->paragraf,
         ]);
 
     } else {    
@@ -126,17 +142,21 @@ public function updateHome(Request $request)
         if ($request->image) {
             $new_image= base64_encode(file_get_contents($request->image));
 
-            $home = Home::find($home_id)->update([
-                'image' => $new_image,
+            $details = Detail::find($details_id)->update([
                 'judul' => $request->judul,
                 'subjudul' => $request->subjudul,
-                'deskripsi' => $request->deskripsi,
+                'penjelasan1' => $request->penjelasan1,
+                'penjelasan2' => $request->penjelasan2,
+                'penjelasan3' => $request->penjelasan3,
+                'penjelasan4' => $request->penjelasan4,
+                'paragraf' => $request->paragraf,
+                'image' => $new_image,
             ]);
         }
 
     }
 
-       if($home){
+       if($details){
            return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Di Update']);
         }else{
            return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Home Gagal Di Update']);
@@ -145,11 +165,11 @@ public function updateHome(Request $request)
 
 }
 
-public function deleteHome(Request $request){
-    $home_id = $request->home_id;
-    $home = Home::find($home_id)->delete();
+public function deleteDetails(Request $request){
+    $details_id = $request->details_id;
+    $details = Detail::find($details_id)->delete();
 
-    if($home){
+    if($details){
         return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Dihapus']);
     }else{
         return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Home Gagal Dihapus']);

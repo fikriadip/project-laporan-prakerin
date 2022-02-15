@@ -1,11 +1,11 @@
 @extends('template.master_admin')
 
 @section('title_web')
-Data Home Landing Page - Bimbel Primago
+Data Teams Landing Page - Bimbel Primago
 @endsection
 
 @section('title_content')
-Home
+Teams
 @endsection
 
 @section('breadcrumbs')
@@ -19,13 +19,13 @@ Home
         <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-        <a href="#">Data Home</a>
+        <a href="#">Data Teams</a>
     </li>
     <li class="separator">
         <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-        <a href="#">Kelola Data Home</a>
+        <a href="#">Kelola Data Teams</a>
     </li>
 </ul>
 @endsection
@@ -35,22 +35,21 @@ Home
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title font-weight-bold">DataTable Home
-                    <button type="button" data-toggle="modal" data-target="#ModalHome"
+                <h4 class="card-title font-weight-bold">DataTable Teams
+                    <button type="button" data-toggle="modal" data-target="#ModalTeam"
                         class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
-                        HOME</button>
+                        TEAMS</button>
                 </h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="tableHome" class="display table table-striped table-bordered table-hover">
+                    <table id="tableTeam" class="display table table-striped table-bordered table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Subjudul</th>
-                                <th>Deskripsi</th>
-                                <th>Image</th>
+                                <th>Nama</th>
+                                <th>Jabatan</th>
+                                <th>Foto Teams</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -65,41 +64,36 @@ Home
 </div>
 
 <!-- Add Modal -->
-<div class="modal fade" id="ModalHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Tambah Data Home</h4>
+                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Tambah Data Teams</h4>
                 <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('add.home') }}" method="POST" id="add-home" enctype="multipart/form-data">
+                <form action="{{ route('add.team') }}" method="POST" id="add-team" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="judul">Masukkan Judul Home</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                        <span class="text-danger error-text judul_error"></span>
+                        <label for="nama">Masukkan Nama Teams</label>
+                        <input type="text" class="form-control" id="nama" name="nama">
+                        <span class="text-danger error-text nama_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="subjudul">Masukkan Subjudul Home</label>
-                        <input type="text" class="form-control" id="subjudul" name="subjudul">
-                        <span class="text-danger error-text subjudul_error"></span>
+                        <label for="jabatan">Masukkan Jabatan Teams</label>
+                        <input type="text" class="form-control" id="jabatan" name="jabatan">
+                        <span class="text-danger error-text jabatan_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi">Masukkan Deskripsi Home</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                        <span class="text-danger error-text deskripsi_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Masukkan Foto</label>
+                        <label for="foto">Masukkan Foto Teams</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" lang="es"
+                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
                                 onchange="previewFile(this)">
-                            <label class="custom-file-label" for="image">Pilih Foto</label>
-                            <span class="text-danger error-text image_error"></span>
+                            <label class="custom-file-label" for="foto">Pilih Foto</label>
+                            <span class="text-danger error-text foto_error"></span>
                         </div>
                         <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
@@ -117,52 +111,49 @@ Home
 {{-- @include('admin.home.edit') --}}
 
 <!-- Edit Modal -->
-<div class="modal fade editHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade editTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Edit Management Home</h4>
+                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Edit Management Teams</h4>
                 <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('update.home') }}" method="POST" id="update-home" enctype="multipart/form-data">
-@csrf
-<div class="form-group">
-    <input type="hidden" name="home_id">
-    <label for="judul">Edit Judul Home</label>
-    <input type="text" class="form-control" id="judul" name="judul">
-    <span class="text-danger error-text judul_error"></span>
-</div>
-<div class="form-group">
-    <label for="subjudul">Edit Subjudul Home</label>
-    <input type="text" class="form-control" id="subjudul" name="subjudul">
-    <span class="text-danger error-text subjudul_error"></span>
-</div>
-<div class="form-group">
-    <label for="deskripsi">Edit Deskripsi Home</label>
-    <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-    <span class="text-danger error-text deskripsi_error"></span>
-</div>
-<div class="form-group">
-    <label for="image">Edit Foto - Kosongkan Bila Sama</label>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="image" name="image" lang="es" onchange="previewFile(this)">
-        <label class="custom-file-label" for="image">Pilih Foto</label>
-        <span class="text-danger error-text image_error"></span>
+                <form action="{{ route('update.team') }}" method="POST" id="update-team" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="hidden" name="team_id">
+                        <label for="nama">Edit Nama Teams</label>
+                        <input type="text" class="form-control" id="nama" name="nama">
+                        <span class="text-danger error-text nama_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="jabatan">Edit Jabatan Teams</label>
+                        <input type="text" class="form-control" id="jabatan" name="jabatan">
+                        <span class="text-danger error-text jabatan_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Edit Foto Teams</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
+                                onchange="previewFile(this)">
+                            <label class="custom-file-label" for="foto">Pilih Foto</label>
+                            <span class="text-danger error-text foto_error"></span>
+                        </div>
+                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
+                            id="btn_close">BATALKAN</button>
+                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
-</div>
-<div class="modal-footer">
-    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btn_close">BATALKAN</button>
-    <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-</div>
-</form>
-</div>
-</div>
-</div>
 </div>
 
 @push('script')
@@ -175,7 +166,7 @@ Home
 
 
     $(document).ready(function () {
-        var table = $('#tableHome').DataTable({
+        var table = $('#tableTeam').DataTable({
             destroy: true,
             searching: true,
             processing: true,
@@ -186,7 +177,7 @@ Home
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ route('data.home.ajax') }}",
+                url: "{{ route('data.team.ajax') }}",
                 type: "get",
                 data: function (data) {
                     data = '';
@@ -198,20 +189,16 @@ Home
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'judul',
-                    name: 'judul'
+                    data: 'nama',
+                    name: 'nama'
                 },
                 {
-                    data: 'subjudul',
-                    name: 'subjudul'
+                    data: 'jabatan',
+                    name: 'jabatan'
                 },
                 {
-                    data: 'deskripsi',
-                    name: 'deskripsi'
-                },
-                {
-                    data: 'image',
-                    name: 'image'
+                    data: 'foto',
+                    name: 'foto'
                 },
                 {
                     data: 'action',
@@ -223,7 +210,7 @@ Home
 
 
     $(function () {
-        $('#add-home').on('submit', function (e) {
+        $('#add-team').on('submit', function (e) {
             e.preventDefault();
             var form = this;
             $('#saveBtn').html('Sedang Mengirim...');
@@ -251,8 +238,8 @@ Home
                             text: data.message,
                             timer: 1200
                         });
-                        $('#tableHome').DataTable().ajax.reload(null, false);
-                        $('#ModalHome').modal('hide');
+                        $('#tableTeam').DataTable().ajax.reload(null, false);
+                        $('#ModalTeam').modal('hide');
                         $('#saveBtn').html('Simpan');
                     }
                 }
@@ -260,25 +247,23 @@ Home
         });
     });
 
-    $(document).on('click', '#editHomeBtn', function () {
-        var home_id = $(this).data('id');
-        $('.editHome').find('form')[0].reset();
-        $('.editHome').find('span.error-text').text('');
-        $.post('{{ route("get.home.edit") }}', {
-            home_id: home_id
+    $(document).on('click', '#editTeamBtn', function () {
+        var team_id = $(this).data('id');
+        $('.editTeam').find('form')[0].reset();
+        $('.editTeam').find('span.error-text').text('');
+        $.post('{{ route("get.team.edit") }}', {
+            team_id: team_id
         }, function (data) {
-            $('.editHome').find('input[name="home_id"]').val(data.details.id);
-            $('.editHome').find('input[name="judul"]').val(data.details
-                .judul);
-            $('.editHome').find('input[name="subjudul"]').val(data.details
-                .subjudul);
-            $('.editHome').find('input[name="deskripsi"]').val(data.details
-                .deskripsi);
-            $('.editHome').modal('show');
+            $('.editTeam').find('input[name="team_id"]').val(data.details.id);
+            $('.editTeam').find('input[name="nama"]').val(data.details
+                .nama);
+            $('.editTeam').find('input[name="jabatan"]').val(data.details
+                .jabatan);
+            $('.editTeam').modal('show');
         }, 'json');
     });
 
-    $('#update-home').on('submit', function (e) {
+    $('#update-team').on('submit', function (e) {
         e.preventDefault();
         var form = this;
         $.ajax({
@@ -304,21 +289,21 @@ Home
                         text: data.message,
                         timer: 1200
                     });
-                    $('#tableHome').DataTable().ajax.reload(null, false);
-                    $('.editHome').modal('hide');
-                    $('.editHome').find('form')[0].reset();
+                    $('#tableTeam').DataTable().ajax.reload(null, false);
+                    $('.editTeam').modal('hide');
+                    $('.editTeam').find('form')[0].reset();
                 }
             }
         });
     });
 
-    $(document).on('click', '#deleteHomeBtn', function () {
-        var home_id = $(this).data('id');
-        var url = '{{ route("delete.home") }}';
+    $(document).on('click', '#deleteTeamBtn', function () {
+        var team_id = $(this).data('id');
+        var url = '{{ route("delete.team") }}';
 
         Swal.fire({
             title: "Yakin Ingin Menghapus?",
-            text: "Anda Akan Menghapus Data Home",
+            text: "Anda Akan Menghapus Data Teams",
             icon: "warning",
             showCancelButton: true,
             showCloseButton: true,
@@ -329,10 +314,10 @@ Home
         }).then(function (result) {
             if (result.value) {
                 $.post(url, {
-                    home_id: home_id
+                    team_id: team_id
                 }, function (data) {
                     if (data.code == 1) {
-                        $('#tableHome').DataTable().ajax.reload(null,
+                        $('#tableTeam').DataTable().ajax.reload(null,
                             false);
                         Swal.fire({
                             icon: 'success',

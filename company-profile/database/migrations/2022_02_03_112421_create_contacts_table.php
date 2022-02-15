@@ -15,11 +15,8 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('lokasi');
             $table->string('deskripsi_lokasi');
-            $table->string('email');
             $table->string('alamat_email');
-            $table->string('telepon');
             $table->string('no_telepon');
             $table->longText('image');
             $table->timestamps();
