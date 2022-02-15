@@ -49,10 +49,10 @@
             <div class="logo-header" data-background-color="blue">
 
                 <a href="#" class="logo">
-                    {{-- <img src="{{ asset('template/assets/img/logo.svg') }}" alt="navbar brand"
+                    {{-- <img src="{{ asset('template_admin/assets/img/logoprimago.png') }}" alt="navbar brand"
                         class="navbar-brand"> --}}
                     {{-- <div class="navbar-brand text-white">SIAKAD</div> --}}
-                    <h2 class="font-weight-bold text-white m-3">LAPORIN</h2>
+                    <h2 class="font-weight-bold text-white m-3">PRIMAGO</h2>
                 </a>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
                     data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">

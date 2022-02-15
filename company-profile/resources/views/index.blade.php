@@ -46,39 +46,6 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="container d-flex align-items-center justify-content-between">
 
-      <div class="logo">
-        <h1><a href="index.html"><span>Bimbel Primago</span></a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>          
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>          
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
-          <div data-aos="zoom-out">
-            <h1>Build Your Landing Page With <span>Bootstlander</span></h1>
-            <h2>We are team of talented designers making websites with Bootstrap</h2>
-            <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto">Read More</a>
-
             <div class="logo">
                 <h1><a href="index.html"><span>Bimbel Primago</span></a></h1>
                 <!-- Uncomment below if you prefer to use an image logo -->
@@ -103,84 +70,6 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero">
 
-  </section>
-  <!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container-fluid">
-
-        <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch" data-aos="fade-right">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
-          </div>
-
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5" data-aos="fade-left">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
-
-            <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>      
-
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-    
-
-    <!-- ======= Details Section ======= -->
-    <section id="details" class="details section-bg">
-      <div class="container">
-
-        <div class="row content">
-          <div class="col-md-8 pt-4" data-aos="fade-up">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Iure at voluptas aspernatur dignissimos doloribus repudiandae.</li>
-              <li><i class="bi bi-check"></i> Est ipsa assumenda id facilis nesciunt placeat sed doloribus praesentium.</li>
-            </ul>
-            <p>
-              Voluptas nisi in quia excepturi nihil voluptas nam et ut. Expedita omnis eum consequatur non. Sed in asperiores aut repellendus. Error quisquam ab maiores. Quibusdam sit in officia
-            </p>
-          </div>
-          <div class="col-md-4" data-aos="fade-right">
-            <img src="{{asset('landing_page/assets/img/details-1.png')}}" class="img-fluid" alt="">
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <!-- End Details Section -->
-
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container">
-
-        <div class="section-title" data-aos="fade-up">
-          <h2>Gallery</h2>
-          <p>Check our Gallery</p>
-        </div>
-
-        <div class="row g-0" data-aos="fade-left">
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-              <a href="{{asset('landing_page/assets/img/gallery/gallery-1.jpg')}}" class="gallery-lightbox">
-                <img src="{{asset('landing_page/assets/img/gallery/gallery-1.jpg')}}" alt="" class="img-fluid">
-              </a>
-
         <div class="container">
             <div class="row justify-content-between">
                 @foreach ($dataHome as $home)
@@ -198,7 +87,6 @@
                         class="img-fluid animated">
                 </div>
                 @endforeach
-
             </div>
         </div>
 
