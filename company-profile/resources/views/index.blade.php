@@ -75,7 +75,7 @@
             <h1>Build Your Landing Page With <span>Bootstlander</span></h1>
             <h2>We are team of talented designers making websites with Bootstrap</h2>
             <div class="text-center text-lg-start">
-              <a href="#about" class="btn-get-started scrollto">Get Started</a>
+              <a href="#about" class="btn-get-started scrollto">Read More</a>
             </div>
           </div>
         </div>
@@ -135,9 +135,6 @@
       <div class="container">
 
         <div class="row content">
-          <div class="col-md-4" data-aos="fade-right">
-            <img src="{{asset('landing_page/assets/img/details-1.png')}}" class="img-fluid" alt="">
-          </div>
           <div class="col-md-8 pt-4" data-aos="fade-up">
             <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
             <p class="fst-italic">
@@ -153,6 +150,9 @@
             <p>
               Voluptas nisi in quia excepturi nihil voluptas nam et ut. Expedita omnis eum consequatur non. Sed in asperiores aut repellendus. Error quisquam ab maiores. Quibusdam sit in officia
             </p>
+          </div>
+          <div class="col-md-4" data-aos="fade-right">
+            <img src="{{asset('landing_page/assets/img/details-1.png')}}" class="img-fluid" alt="">
           </div>
         </div>
 

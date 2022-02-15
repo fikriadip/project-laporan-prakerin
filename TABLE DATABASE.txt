@@ -1,0 +1,15 @@
+TABLE DATABASE
+
+- home = judul, subjudul, image
+- about = judul, subjudul, link youtube
+- isi about = judul, isi judul, icon
+  untuk judul = apa yang kita berikan, dimana lokasi kita, kenapa memilih kita
+- dibawah about = judul, subjudul, penjelasan1, penjelasan2, penjelasan3, penjelasan 4, paragraf, image
+- galery = foto
+- team = foto, nama, jabatan
+- pricing = judul, harga, deskripsi
+- FAQ = pertanyaan, jawaban
+- contact = lokasi, email, telpon, image
+
+code warna red : rgb(201 32 32 / 90%);
+code warna kuning : #ffcc2e;
