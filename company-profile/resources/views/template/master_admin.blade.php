@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title_web')</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-    {{-- <link href="{{asset('template_masyarakat/assets/img/favicon.png')}}" rel="icon"> --}}
+    <link rel="icon" href="{{ asset('template_login/img/favicon.png') }}" />
 	
     <!-- Fonts and icons -->
     <script src="{{asset('template_admin/assets/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -175,6 +175,17 @@
     <script src="{{asset('template_admin/assets/js/demo.js')}}"></script> --}}
 
     <script>
+        function previewFile(input) {
+            var file = $("input[type=file]").get(0).files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    $("#previewImg").attr("src", reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         const contentEle = document.getElementById("content");
         const searchInput = document.getElementById("searchInput");
         const foundEle = document.getElementById('found')
