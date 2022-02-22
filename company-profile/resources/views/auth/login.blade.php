@@ -43,11 +43,10 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>SERVICE SARANA PRA SARANA</h3>
-                    <p>Selamat Datang Di Aplikasi Web Review dan Ulasan
-                        Sarana Pra Sarana SMK Taruna Bhakti</p>
+                    <h3>ADMIN BIMBEL PRIMAGO</h3>
+                    <p>Selamat Datang Di Aplikasi Web Bimbingan Belajar Primago</p>
                 </div>
-                <img src="{{ asset('template_login/img/log.svg') }}" class="image" alt="Image Login" />
+                <img src="{{ asset('template_login/img/login.svg') }}" class="image" alt="Image Login" />
             </div>
         </div>
     </div>
