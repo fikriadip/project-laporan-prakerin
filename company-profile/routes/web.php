@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DetailsController;
 use App\Http\Controllers\Admin\PricingController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\LandingPageController;
 
 
@@ -35,9 +36,9 @@ Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->n
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth:web','revalidate']], function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('admin.dashboard');
+    // })->name('admin.dashboard');
     
 Route::get('/home',[HomeController::class, 'index'])->name('data.home');
 Route::post('/add-home',[HomeController::class,'store'])->name('add.home');
@@ -94,4 +95,11 @@ Route::get('/contact-ajax',[ContactController::class, 'ajax'])->name('data.conta
 Route::post('/get-contact',[ContactController::class, 'editContact'])->name('get.contact.edit');
 Route::post('/update-contact',[ContactController::class, 'updateContact'])->name('update.contact');
 Route::post('/delete-contact',[ContactController::class,'deleteContact'])->name('delete.contact');
+
+Route::get('/useradmin',[UserController::class, 'index'])->name('data.user');
+Route::post('/add-useradmin',[UserController::class,'store'])->name('add.user');
+Route::get('/useradmin-ajax',[UserController::class, 'ajax'])->name('data.user.ajax');
+Route::post('/get-useradmin',[UserController::class, 'editUser'])->name('get.user.edit');
+Route::post('/update-useradmin',[UserController::class, 'updateUser'])->name('update.user');
+Route::post('/delete-useradmin',[UserController::class,'deleteUser'])->name('delete.user');
 });

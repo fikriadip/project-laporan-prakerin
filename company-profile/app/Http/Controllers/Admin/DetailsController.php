@@ -70,8 +70,12 @@ class DetailsController extends Controller
     return DataTables::of($tableDetails)
             ->addIndexColumn()
             ->addColumn('image', function($row){
+                $table = '<center>';
                 return '<img src='."data:image/" . $row->imageType . ";base64," . $row->image.' width="190px" class="text-center shadow-sm rounded m-2" loading="lazy">';
-              })
+                $table .= '</center>';
+                
+                return $table;
+            })
             ->addColumn('action', function($row){
                 $table = '<center>';
                 $table .=  '<div class="list-icons">';

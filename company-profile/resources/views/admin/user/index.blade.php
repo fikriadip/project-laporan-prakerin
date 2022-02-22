@@ -1,11 +1,11 @@
 @extends('template.master_admin')
 
 @section('title_web')
-Data Home Landing Page - Bimbel Primago
+Data User Landing Page - Bimbel Primago
 @endsection
 
 @section('title_content')
-Home
+User Admin
 @endsection
 
 @section('breadcrumbs')
@@ -19,13 +19,13 @@ Home
         <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-        <a href="#">Data Home</a>
+        <a href="#">Data User</a>
     </li>
     <li class="separator">
         <i class="flaticon-right-arrow"></i>
     </li>
     <li class="nav-item">
-        <a href="#">Kelola Data Home</a>
+        <a href="#">Kelola Data User</a>
     </li>
 </ul>
 @endsection
@@ -35,22 +35,21 @@ Home
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title font-weight-bold">DataTable Home
-                    <button type="button" data-toggle="modal" data-target="#ModalHome"
+                <h4 class="card-title font-weight-bold">DataTable User
+                    <button type="button" data-toggle="modal" data-target="#ModalUser"
                         class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
-                        HOME</button>
+                        ADMIN</button>
                 </h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="tableHome" class="display table table-striped table-bordered table-hover">
+                    <table id="tableUser" class="display table table-striped table-bordered table-hover">
                         <thead>
                             <tr class="text-center">
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Subjudul</th>
-                                <th>Deskripsi</th>
-                                <th>Image</th>
+                                <th>Nama Admin</th>
+                                <th>Email</th>
+                                <th>Foto</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -65,7 +64,7 @@ Home
 </div>
 
 <!-- Add Modal -->
-<div class="modal fade" id="ModalHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -76,30 +75,35 @@ Home
             </div>
             <div class="modal-body">
                 <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('add.home') }}" method="POST" id="add-home" enctype="multipart/form-data">
+                <form action="{{ route('add.user') }}" method="POST" id="add-admin" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="judul">Masukkan Judul Home</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                        <span class="text-danger error-text judul_error"></span>
+                        <label for="name">Masukkan Nama Admin</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                        <span class="text-danger error-text name_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="subjudul">Masukkan Subjudul Home</label>
-                        <input type="text" class="form-control" id="subjudul" name="subjudul">
-                        <span class="text-danger error-text subjudul_error"></span>
+                        <label for="email">Masukkan Alamat Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                        <span class="text-danger error-text email_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="deskripsi">Masukkan Deskripsi Home</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                        <span class="text-danger error-text deskripsi_error"></span>
+                        <label for="password">Masukkan Password Akun</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                        <span class="text-danger error-text password_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for="image">Masukkan Foto</label>
+                        <label for="confirm_password">Masukkan Konfirmasi Password Akun</label>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                        <span class="text-danger error-text confirm_password_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Masukkan Foto</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" lang="es"
+                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
                                 onchange="previewFile(this)">
-                            <label class="custom-file-label" for="image">Pilih Foto</label>
-                            <span class="text-danger error-text image_error"></span>
+                            <label class="custom-file-label" for="foto">Pilih Foto</label>
+                            <span class="text-danger error-text foto_error"></span>
                         </div>
                         <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
@@ -117,7 +121,7 @@ Home
 {{-- @include('admin.home.edit') --}}
 
 <!-- Edit Modal -->
-<div class="modal fade editHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -128,41 +132,38 @@ Home
             </div>
             <div class="modal-body">
                 <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('update.home') }}" method="POST" id="update-home" enctype="multipart/form-data">
-@csrf
-<div class="form-group">
-    <input type="hidden" name="home_id">
-    <label for="judul">Edit Judul Home</label>
-    <input type="text" class="form-control" id="judul" name="judul">
-    <span class="text-danger error-text judul_error"></span>
-</div>
-<div class="form-group">
-    <label for="subjudul">Edit Subjudul Home</label>
-    <input type="text" class="form-control" id="subjudul" name="subjudul">
-    <span class="text-danger error-text subjudul_error"></span>
-</div>
-<div class="form-group">
-    <label for="deskripsi">Edit Deskripsi Home</label>
-    <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-    <span class="text-danger error-text deskripsi_error"></span>
-</div>
-<div class="form-group">
-    <label for="image">Edit Foto - Kosongkan Bila Sama</label>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="image" name="image" lang="es" onchange="previewFile(this)">
-        <label class="custom-file-label" for="image">Pilih Foto</label>
-        <span class="text-danger error-text image_error"></span>
+                <form action="{{ route('update.user') }}" method="POST" id="update-user" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="hidden" name="user_id">
+                        <label for="name">Edit Nama Admin</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                        <span class="text-danger error-text name_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Edit Alamat Email Admin</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                        <span class="text-danger error-text email_error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Edit Foto - Kosongkan Bila Sama</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
+                                onchange="previewFile(this)">
+                            <label class="custom-file-label" for="foto">Pilih Foto</label>
+                            <span class="text-danger error-text foto_error"></span>
+                        </div>
+                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
+                            id="btn_close">BATALKAN</button>
+                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
-</div>
-<div class="modal-footer">
-    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btn_close">BATALKAN</button>
-    <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-</div>
-</form>
-</div>
-</div>
-</div>
 </div>
 
 @push('script')
@@ -175,7 +176,7 @@ Home
 
 
     $(document).ready(function () {
-        var table = $('#tableHome').DataTable({
+        var table = $('#tableUser').DataTable({
             destroy: true,
             searching: true,
             processing: true,
@@ -186,7 +187,7 @@ Home
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: "{{ route('data.home.ajax') }}",
+                url: "{{ route('data.user.ajax') }}",
                 type: "get",
                 data: function (data) {
                     data = '';
@@ -198,20 +199,16 @@ Home
                     name: 'DT_RowIndex'
                 },
                 {
-                    data: 'judul',
-                    name: 'judul'
+                    data: 'name',
+                    name: 'name'
                 },
                 {
-                    data: 'subjudul',
-                    name: 'subjudul'
+                    data: 'email',
+                    name: 'email'
                 },
                 {
-                    data: 'deskripsi',
-                    name: 'deskripsi'
-                },
-                {
-                    data: 'image',
-                    name: 'image'
+                    data: 'foto',
+                    name: 'foto'
                 },
                 {
                     data: 'action',
@@ -223,7 +220,7 @@ Home
 
 
     $(function () {
-        $('#add-home').on('submit', function (e) {
+        $('#add-admin').on('submit', function (e) {
             e.preventDefault();
             var form = this;
             $('#saveBtn').html('Sedang Mengirim...');
@@ -251,8 +248,8 @@ Home
                             text: data.message,
                             timer: 1200
                         });
-                        $('#tableHome').DataTable().ajax.reload(null, false);
-                        $('#ModalHome').modal('hide');
+                        $('#tableUser').DataTable().ajax.reload(null, false);
+                        $('#ModalAdmin').modal('hide');
                         $('#saveBtn').html('Simpan');
                     }
                 }
@@ -260,25 +257,23 @@ Home
         });
     });
 
-    $(document).on('click', '#editHomeBtn', function () {
-        var home_id = $(this).data('id');
-        $('.editHome').find('form')[0].reset();
-        $('.editHome').find('span.error-text').text('');
-        $.post('{{ route("get.home.edit") }}', {
-            home_id: home_id
+    $(document).on('click', '#editUserBtn', function () {
+        var user_id = $(this).data('id');
+        $('.editUser').find('form')[0].reset();
+        $('.editUser').find('span.error-text').text('');
+        $.post('{{ route("get.user.edit") }}', {
+            user_id: user_id
         }, function (data) {
-            $('.editHome').find('input[name="home_id"]').val(data.details.id);
-            $('.editHome').find('input[name="judul"]').val(data.details
-                .judul);
-            $('.editHome').find('input[name="subjudul"]').val(data.details
-                .subjudul);
-            $('.editHome').find('input[name="deskripsi"]').val(data.details
-                .deskripsi);
-            $('.editHome').modal('show');
+            $('.editUser').find('input[name="user_id"]').val(data.details.id);
+            $('.editUser').find('input[name="name"]').val(data.details
+                .name);
+            $('.editUser').find('input[name="email"]').val(data.details
+                .email);
+            $('.editUser').modal('show');
         }, 'json');
     });
 
-    $('#update-home').on('submit', function (e) {
+    $('#update-user').on('submit', function (e) {
         e.preventDefault();
         var form = this;
         $.ajax({
@@ -304,17 +299,17 @@ Home
                         text: data.message,
                         timer: 1200
                     });
-                    $('#tableHome').DataTable().ajax.reload(null, false);
-                    $('.editHome').modal('hide');
-                    $('.editHome').find('form')[0].reset();
+                    $('#tableUser').DataTable().ajax.reload(null, false);
+                    $('.editUser').modal('hide');
+                    $('.editUser').find('form')[0].reset();
                 }
             }
         });
     });
 
-    $(document).on('click', '#deleteHomeBtn', function () {
-        var home_id = $(this).data('id');
-        var url = '{{ route("delete.home") }}';
+    $(document).on('click', '#deleteUserBtn', function () {
+        var user_id = $(this).data('id');
+        var url = '{{ route("delete.user") }}';
 
         Swal.fire({
             title: "Yakin Ingin Menghapus?",
@@ -329,10 +324,10 @@ Home
         }).then(function (result) {
             if (result.value) {
                 $.post(url, {
-                    home_id: home_id
+                    user_id: user_id
                 }, function (data) {
                     if (data.code == 1) {
-                        $('#tableHome').DataTable().ajax.reload(null,
+                        $('#tableUser').DataTable().ajax.reload(null,
                             false);
                         Swal.fire({
                             icon: 'success',

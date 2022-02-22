@@ -63,7 +63,11 @@ class ContactController extends Controller
     return DataTables::of($tableContact)
             ->addIndexColumn()
             ->addColumn('image', function($row){
+                $table = '<center>';
                 return '<img src='."data:image/" . $row->imageType . ";base64," . $row->image.' width="190px" class="shadow-sm rounded m-2" loading="lazy">';
+                $table .= '</center>';
+
+                return $table;
               })
             ->addColumn('action', function($row){
                 $table = '<center>';

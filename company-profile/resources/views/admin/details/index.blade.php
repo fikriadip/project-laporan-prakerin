@@ -11,7 +11,7 @@ Details
 @section('breadcrumbs')
 <ul class="breadcrumbs">
     <li class="nav-home">
-        <a href="{{ route('admin.dashboard') }}">
+        <a href="#">
             <i class="flaticon-home"></i>
         </a>
     </li>
