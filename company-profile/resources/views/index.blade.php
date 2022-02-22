@@ -130,7 +130,7 @@
 
                         @foreach ($dataDeskAbout as $deskAbout)
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="icon"><i class="bx bx-fingerprint"></i></div>
+                            <div class="icon"><i class="bx bx-check"></i></div>
                             <h4 class="title"><a>{{ $deskAbout->judul }}</a></h4>
                             <p class="description">{{ $deskAbout->deskripsi }}</p>
                         </div>
@@ -277,19 +277,19 @@
 
                 <div class="faq-list">
                     <ul>
-                      @foreach ($dataFaq as $faq)
-                      <li data-aos="fade-up">
-                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                        data-bs-target="#faq-list-1">{{ $faq->pertanyaan }} <i
-                        class="bx bx-chevron-down icon-show"></i><i
-                        class="bx bx-chevron-up icon-close"></i></a>
-                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                          <p>
-                            {{ $faq->jawaban }}
-                          </p>
-                        </div>
-                      </li>
-                      @endforeach
+                        @foreach ($dataFaq as $faq)
+                        <li data-aos="fade-up">
+                            <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+                                data-bs-target="#faq-list-1">{{ $faq->pertanyaan }} <i
+                                    class="bx bx-chevron-down icon-show"></i><i
+                                    class="bx bx-chevron-up icon-close"></i></a>
+                            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                                <p>
+                                    {{ $faq->jawaban }}
+                                </p>
+                            </div>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -307,30 +307,38 @@
 
                 <div class="row">
 
+                    @foreach ($dataContact as $contact)
+
                     <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>Location:</h4>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <p>{{ $contact->deskripsi_lokasi}}</p>
                             </div>
 
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>info@example.com</p>
+                                <p>{{ $contact->alamat_email}}</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>Call:</h4>
-                                <p>+1 5589 55488 55s</p>
+                                <p>{{ $contact->no_telepon}}</p>
                             </div>
 
                         </div>
 
                     </div>
+                    <div class="col-lg-8">
+                        <img src="{{ "data:image/" . $contact->imageType . ";base64," . $contact->image }}"
+                            class="img-fluid" alt="" width="500">
+                    </div>
 
+                    @endforeach
+                    
                 </div>
 
             </div>
@@ -368,11 +376,12 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>link</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#about">About us</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#gallery">Gallery</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#team">Team</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#pricing">Pricing</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2 col-md-6 footer-links">
@@ -380,9 +389,9 @@
                         <ul>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
                         </ul>
                     </div>
 

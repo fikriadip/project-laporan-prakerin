@@ -10,6 +10,8 @@ use App\Models\DeskripsiAbout;
 use App\Models\Detail;
 use App\Models\Team;
 use App\Models\Faq;
+use App\Models\Contact;
+
 
 class LandingPageController extends Controller
 {
@@ -21,7 +23,8 @@ class LandingPageController extends Controller
         $dataDetails = Detail::all();
         $dataTeam = Team::all();
         $dataFaq = Faq::all();
+        $dataContact = Contact::all();
 
-        return view('index',compact('dataHome', 'dataAbout', 'dataDeskAbout', 'dataDetails', 'dataTeam', 'dataFaq'));
+        return view('index',compact('dataHome', 'dataAbout', 'dataDeskAbout', 'dataDetails', 'dataTeam', 'dataFaq', 'dataContact'));
     }
 }

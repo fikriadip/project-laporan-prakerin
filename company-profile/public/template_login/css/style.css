@@ -246,7 +246,7 @@ input[type="file"]:hover::before {
 }
 
 .btn:hover {
-    background-color: #333333;
+    background-color: #ffcc2e;
 }
 
 .panels-container {
