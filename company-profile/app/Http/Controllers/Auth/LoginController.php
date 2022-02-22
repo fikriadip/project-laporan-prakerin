@@ -36,12 +36,12 @@ class LoginController extends Controller
             if (Auth()->user()) {
                 toast('Berhasil Login Welcome Admin','success');
                 return redirect()->route('data.user');
+            } 
         } else {
             Alert::warning('GAGAL LOGIN', 'Periksa Kembali Email Dan Password Anda');
             return redirect()->route('admin.login')->withInput()->withErrors(['email' => 'Email yang anda masukkan salah','password' => 'Password yang anda masukkan salah']);
         }
     }
-}
 
     /**
      * Create a new controller instance.
