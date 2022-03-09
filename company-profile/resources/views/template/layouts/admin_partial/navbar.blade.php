@@ -27,8 +27,9 @@
 						</li>
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-								<div class="avatar-sm">
-									<img src="{{asset('template_admin/assets/img/avatar.png') }}" alt="..." class="avatar-img rounded-circle">
+								<div class="avatar">
+									<img src="{{ "data:image/" . Auth::user()->imageType . ";base64," . Auth::user()->foto }}" alt="Foto Admin"
+                        class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -36,7 +37,7 @@
 									<li>
 										<div class="user-box">
 											<div class="u-text">
-												{{-- <h4>Hi, &nbsp;{{ Auth::user()->name }}</h4> --}}
+												<h4>Hi, &nbsp;{{ Auth::user()->name }}</h4>
 											</div>
 										</div>
 									</li>

@@ -37,9 +37,9 @@ class PricingController extends Controller
             ]);
 
            if($pricing){
-               return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data About Berhasil Ditambahkan']);
+               return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Pricing Berhasil Ditambahkan']);
             }else{
-               return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Gagal Menambahkan Data About']);
+               return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Gagal Menambahkan Data Pricing']);
            }
        }
    
@@ -59,8 +59,8 @@ class PricingController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editPricingBtn" style="font-size: 16px;" title="Edit Data Pricing"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deletePricingBtn" style="font-size: 16px;" title="Delete Pricing"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editPricingBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Pricing"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deletePricingBtn" style="font-size: 16px; cursor: pointer;" title="Delete Pricing"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -106,9 +106,9 @@ public function updatePricing(Request $request)
         }
 
        if($pricing){
-           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data About Berhasil Di Update']);
+           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Pricing Berhasil Di Update']);
         }else{
-           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data About Gagal Di Update']);
+           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Pricing Gagal Di Update']);
        }
    }
 
@@ -117,9 +117,9 @@ public function deletePricing(Request $request){
     $pricing = Pricing::find($pricing_id)->delete();
 
     if($pricing){
-        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data About Berhasil Dihapus']);
+        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Pricing Berhasil Dihapus']);
     }else{
-        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data About Gagal Dihapus']);
+        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Pricing Gagal Dihapus']);
     }
 }
 }

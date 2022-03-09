@@ -13,7 +13,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.user.index');
+        $admin = User::where('id', '!=', auth()->id())->latest()->get();
+        return view('admin.user.index', compact('admin'));
     }
 
     public function store(Request $request)
@@ -91,8 +92,8 @@ class UserController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editUserBtn" style="font-size: 16px;" title="Edit Data Teams"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deleteUserBtn" style="font-size: 16px;" title="Delete Teams"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editUserBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Admin"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteUserBtn" style="font-size: 16px; cursor: pointer;" title="Delete Admin"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -154,9 +155,9 @@ public function updateUser(Request $request)
     }
 
        if($user){
-           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Di Update']);
+           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Admin Berhasil Di Update']);
         }else{
-           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Home Gagal Di Update']);
+           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Admin Gagal Di Update']);
        }
    }
 
@@ -167,9 +168,9 @@ public function deleteUser(Request $request){
     $user = User::find($user_id)->delete();
 
     if($user){
-        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Teams Berhasil Dihapus']);
+        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Admin Berhasil Dihapus']);
     }else{
-        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Teams Gagal Dihapus']);
+        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Admin Gagal Dihapus']);
     }
 }
 

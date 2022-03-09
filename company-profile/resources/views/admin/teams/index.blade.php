@@ -37,7 +37,7 @@ Teams
             <div class="card-header">
                 <h4 class="card-title font-weight-bold">DataTable Teams
                     <button type="button" data-toggle="modal" data-target="#ModalTeam"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
+                        class="btn btn-primary float-right text-white"><i class="fas fa-plus mr-2"></i> TAMBAH DATA
                         TEAMS</button>
                 </h4>
             </div>
@@ -64,7 +64,7 @@ Teams
 </div>
 
 <!-- Add Modal -->
-<div class="modal fade" id="ModalTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="ModalTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -106,12 +106,12 @@ Teams
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- @include('admin.home.edit') --}}
 
 <!-- Edit Modal -->
-<div class="modal fade editTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade editTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -154,7 +154,156 @@ Teams
             </div>
         </div>
     </div>
+</div> --}}
+
+
+
+<div class="modal fade" id="ModalTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">TAMBAH DATA TEAM
+                        </h3>
+                    </div>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('add.team') }}" method="POST" id="add-team" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label h6 font-weight-bold">Masukkan Nama
+                                        Team</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-id-card ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="nama" name="nama">
+                                    </div>
+                                    <span class="text-danger error-text nama_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jabatan" class="form-label h6 font-weight-bold">Masukkan Jabatan
+                                        Team</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-user-tag ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="jabatan" class="form-control input-custom"
+                                            name="jabatan" />
+                                    </div>
+                                    <span class="text-danger error-text jabatan_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label h6 font-weight-bold">Masukkan Foto Team</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-image ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" id="foto" class="form-control input-custom" name="foto"
+                                            onchange="previewFile(this)" />
+                                    </div>
+                                    <span class="text-danger error-text foto_error"></span>
+                                    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Edit Modal -->
+<div class="modal fade editTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">EDIT MANAGEMENT TEAM
+                        </h3>
+                    </div>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('update.team') }}" method="POST" id="update-team" enctype="multipart/form-data">
+                                @csrf
+                        <input type="hidden" name="team_id">
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label h6 font-weight-bold">Edit Nama
+                                        Team</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-id-card ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="nama" name="nama">
+                                    </div>
+                                    <span class="text-danger error-text nama_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="jabatan" class="form-label h6 font-weight-bold">Edit Jabatan
+                                        Team</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-user-tag ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="jabatan" class="form-control input-custom"
+                                            name="jabatan" />
+                                    </div>
+                                    <span class="text-danger error-text jabatan_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label h6 font-weight-bold">Edit Foto Team - Kosongkan Bila Sama</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-image ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" id="foto" class="form-control input-custom" name="foto"/>
+                                    </div>
+                                    <span class="text-danger error-text foto_error"></span>
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 @push('script')
 <script>
@@ -229,7 +378,7 @@ Teams
                         $.each(data.error, function (prefix, val) {
                             $(form).find('span.' + prefix + '_error').text(val[0]);
                         });
-                        $('#saveBtn').html('Simpan');
+                        $('#saveBtn').html('SIMPAN');
                     } else {
                         $(form)[0].reset();
                         Swal.fire({

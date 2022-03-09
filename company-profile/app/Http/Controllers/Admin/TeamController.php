@@ -74,8 +74,8 @@ class TeamController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editTeamBtn" style="font-size: 16px;" title="Edit Data Teams"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deleteTeamBtn" style="font-size: 16px;" title="Delete Teams"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editTeamBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Teams"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteTeamBtn" style="font-size: 16px; cursor: pointer;" title="Delete Teams"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -136,9 +136,9 @@ public function updateTeam(Request $request)
     }
 
        if($team){
-           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Teams Berhasil Di Update']);
+           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Team Berhasil Di Update']);
         }else{
-           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Teams Gagal Di Update']);
+           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Team Gagal Di Update']);
        }
    }
 
@@ -149,9 +149,9 @@ public function deleteTeam(Request $request){
     $team = Team::find($team_id)->delete();
 
     if($team){
-        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Teams Berhasil Dihapus']);
+        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Team Berhasil Dihapus']);
     }else{
-        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Teams Gagal Dihapus']);
+        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Team Gagal Dihapus']);
     }
 }
 }

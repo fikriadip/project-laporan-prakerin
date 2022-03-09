@@ -57,8 +57,8 @@ class FaqController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editFaqBtn" style="font-size: 16px;" title="Edit Data Faq"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deleteFaqBtn" style="font-size: 16px;" title="Delete Faq"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editFaqBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Faq"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteFaqBtn" style="font-size: 16px; cursor: pointer;" title="Delete Faq"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';

@@ -17,10 +17,10 @@ class LandingPageController extends Controller
 {
     public function LandingPage()
     {
-        $dataHome = Home::all();
-        $dataAbout = About::all();
-        $dataDeskAbout = DeskripsiAbout::all();
-        $dataDetails = Detail::all();
+        $dataHome = Home::paginate(1);
+        $dataAbout = About::paginate(1);
+        $dataDeskAbout = DeskripsiAbout::paginate(3);
+        $dataDetails = Detail::paginate(1);
         $dataTeam = Team::all();
         $dataFaq = Faq::all();
         $dataContact = Contact::all();

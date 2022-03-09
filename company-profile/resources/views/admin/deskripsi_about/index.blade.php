@@ -37,7 +37,7 @@ Deskripsi About
             <div class="card-header">
                 <h4 class="card-title font-weight-bold">DataTable Deskripsi About
                     <button type="button" data-toggle="modal" data-target="#ModalDeskAbout"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
+                        class="btn btn-primary float-right text-white"><i class="fas fa-plus mr-2"></i> TAMBAH DATA
                         DESKRIPSI</button>
                 </h4>
             </div>
@@ -65,72 +65,115 @@ Deskripsi About
 <!-- Add Modal -->
 <div class="modal fade" id="ModalDeskAbout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Tambah Data Deskripsi</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('add.desk.about') }}" method="POST" id="add-desk-about">
-                    @csrf
-                    <div class="form-group">
-                        <label for="judul">Masukkan Judul Deskripsi</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                        <span class="text-danger error-text judul_error"></span>
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">TAMBAH DATA DESKRIPSI
+                        </h3>
                     </div>
-                    <div class="form-group">
-                        <label for="deskripsi">Masukkan Deskripsi</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                        <span class="text-danger error-text deskripsi_error"></span>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('add.desk.about') }}" method="POST" id="add-desk-about">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label h6 font-weight-bold">Masukkan Judul Deskripsi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-heading ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="judul" name="judul">
+                                    </div>
+                                    <span class="text-danger error-text judul_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="deskripsi" class="form-label h6 font-weight-bold">Masukkan Deskripsi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-comment-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="deskripsi" class="form-control input-custom"
+                                            name="deskripsi" />
+                                    </div>
+                                    <span class="text-danger error-text deskripsi_error"></span>
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-{{-- @include('admin.home.edit') --}}
-
 <!-- Edit Modal -->
 <div class="modal fade editDeskAbout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Edit Management Deskripsi
-                    About</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('update.desk.about') }}" method="POST" id="update-desk-about">
-                    @csrf
-                    <div class="form-group">
-                        <input type="hidden" name="desk_about_id">
-                        <label for="judul">Edit Judul Deskripsi About</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                        <span class="text-danger error-text judul_error"></span>
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">EDIT MANAGEMENT DESKRIPSI
+                        </h3>
                     </div>
-                    <div class="form-group">
-                        <label for="deskripsi">Edit Deskripsi About</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi">
-                        <span class="text-danger error-text deskripsi_error"></span>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('update.desk.about') }}" method="POST" id="update-desk-about">
+                                @csrf
+                                <input type="hidden" name="desk_about_id">
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label h6 font-weight-bold">Edit Judul Deskripsi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-heading ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="judul" name="judul">
+                                    </div>
+                                    <span class="text-danger error-text judul_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="deskripsi" class="form-label h6 font-weight-bold">Edit Deskripsi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-comment-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="deskripsi" class="form-control input-custom"
+                                            name="deskripsi" />
+                                    </div>
+                                    <span class="text-danger error-text deskripsi_error"></span>
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -205,7 +248,7 @@ Deskripsi About
                         $.each(data.error, function (prefix, val) {
                             $(form).find('span.' + prefix + '_error').text(val[0]);
                         });
-                        $('#saveBtn').html('Simpan');
+                        $('#saveBtn').html('SIMPAN');
                     } else {
                         $(form)[0].reset();
                         Swal.fire({

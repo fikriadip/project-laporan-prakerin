@@ -55,9 +55,9 @@ class DetailsController extends Controller
         }
 
            if($details){
-               return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Ditambahkan']);
+               return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Details Berhasil Ditambahkan']);
             }else{
-               return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Gagal Menambahkan Data Home']);
+               return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Gagal Menambahkan Data Details']);
            }
        }
    
@@ -84,8 +84,9 @@ class DetailsController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="editDetailsBtn" style="font-size: 16px;" title="Edit Data Home"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2 pe-auto" id="deleteDetailsBtn" style="font-size: 16px;" title="Delete Home"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editDetailsBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Details"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<a href="../admin/show-details/'.$row->id.'" class="dropdown-item mr-2" style="font-size: 16px; cursor: pointer;" title="Detail Data Details"><i class="fas fa-eye text-dark mr-2"></i>Detail</a>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteDetailsBtn" style="font-size: 16px; cursor: pointer;" title="Delete Details"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -97,6 +98,13 @@ class DetailsController extends Controller
             ->make(true);   
 }
 
+}
+
+public function showDetail($id)
+{
+    $showDetails = Detail::find($id);
+    // dd($showPengaduan);
+    return view('admin.details.show',compact('showDetails'));
 }
 
 public function editDetails(Request $request){
@@ -161,9 +169,9 @@ public function updateDetails(Request $request)
     }
 
        if($details){
-           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Di Update']);
+           return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Details Berhasil Di Update']);
         }else{
-           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Home Gagal Di Update']);
+           return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Details Gagal Di Update']);
        }
    }
 
@@ -174,9 +182,9 @@ public function deleteDetails(Request $request){
     $details = Detail::find($details_id)->delete();
 
     if($details){
-        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Home Berhasil Dihapus']);
+        return response()->json(['code'=>1, 'status' => 'BERHASIL', 'message' => 'Data Details Berhasil Dihapus']);
     }else{
-        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Home Gagal Dihapus']);
+        return response()->json(['code'=>0, 'status' => 'GAGAL', 'message' => 'Data Details Gagal Dihapus']);
     }
 }
 }

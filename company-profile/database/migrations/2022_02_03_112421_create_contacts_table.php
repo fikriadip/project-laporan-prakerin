@@ -18,7 +18,6 @@ class CreateContactsTable extends Migration
             $table->string('deskripsi_lokasi');
             $table->string('alamat_email');
             $table->string('no_telepon');
-            $table->longText('image');
             $table->timestamps();
         });
     }

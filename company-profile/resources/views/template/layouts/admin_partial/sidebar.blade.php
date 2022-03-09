@@ -4,14 +4,13 @@
 		        <div class="sidebar-content">
 		            <div class="user">
 		                <div class="avatar-sm float-left mr-2">
-		                    <img src="{{asset('template_admin/assets/img/avatar.png')}}" alt="..."
-		                        class="avatar-img rounded-circle">
+								<img src="{{ "data:image/" . Auth::user()->imageType . ";base64," . Auth::user()->foto }}" alt="Foto Admin"
+                        class="avatar-img rounded-circle">
 		                </div>
 		                <div class="info">
 		                    <a>
 		                        <span>
 		                            {{ Auth::user()->name }}
-		                            {{-- Alex --}}
 		                            <span class="user-level text-capitalize">Administrator</span>
 		                        </span>
 		                    </a>
@@ -68,7 +67,7 @@
 		                </li>
 						
 						<li
-		                    class="nav-item {{ Route::currentRouteNamed( 'data.details' ) ?  'active' : '' }}">
+		                    class="nav-item {{ Route::currentRouteNamed( 'data.details' ) || Route::currentRouteNamed( 'get.details.show' )  ?  'active' : '' }}">
 		                    <a href="{{route('data.details')}}">
 		                        <i class="fas fa-eye"></i>
 		                        <p>Manage Details</p>

@@ -37,7 +37,7 @@ User Admin
             <div class="card-header">
                 <h4 class="card-title font-weight-bold">DataTable User
                     <button type="button" data-toggle="modal" data-target="#ModalUser"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
+                        class="btn btn-primary float-right text-white"><i class="fas fa-user-plus mr-2"></i> TAMBAH DATA
                         ADMIN</button>
                 </h4>
             </div>
@@ -66,101 +66,178 @@ User Admin
 <!-- Add Modal -->
 <div class="modal fade" id="ModalUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Tambah Data Home</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('add.user') }}" method="POST" id="add-admin" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="name">Masukkan Nama Admin</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                        <span class="text-danger error-text name_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Masukkan Alamat Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                        <span class="text-danger error-text email_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Masukkan Password Akun</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                        <span class="text-danger error-text password_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Masukkan Konfirmasi Password Akun</label>
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password">
-                        <span class="text-danger error-text confirm_password_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Masukkan Foto</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="foto">Pilih Foto</label>
-                            <span class="text-danger error-text foto_error"></span>
+        <div class="row">
+            <div class="col-12">
+                <div class="card"
+                style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                <div class="text-center mb-2">
+                    <h3 class="font-weight-bold mt-5">TAMBAH ADMIN BARU
+                    </h3>
+                </div>
+                <div class="card-body mt-2">
+                    <div class="modal-content">
+
+                            <form action="{{ route('add.user') }}" method="POST" id="add-admin"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="name" class="form-label h6 font-weight-bold">Masukkan Nama Admin</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-id-card-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="name" name="name">
+                                    </div>
+                                    <span class="text-danger error-text name_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label h6 font-weight-bold">Masukkan Email
+                                        Admin</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-envelope ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="email" id="email" class="form-control input-custom" name="email" />
+                                    </div>
+                                    <span class="text-danger error-text email_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label h6 font-weight-bold">Masukkan
+                                        Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-lock ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="password" id="password" class="form-control input-custom"
+                                            name="password" />
+                                        </div>
+                                        <span class="text-danger error-text password_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirm_password" class="form-label h6 font-weight-bold">Masukkan
+                                        Konfirmasi
+                                        Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-lock ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="password" id="confirm_password" class="form-control input-custom"
+                                            name="confirm_password" />
+                                            
+                                        </div>
+                                        <span class="text-danger error-text confirm_password_error"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label h6 font-weight-bold">Pilih Foto -  Dapat Di Kosongkan</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-image ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" id="foto" class="form-control input-custom" name="foto"
+                                            onchange="previewFile(this)" />
+                                        </div>
+                                        <span class="text-danger error-text foto_error"></span>
+                                    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
                         </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-{{-- @include('admin.home.edit') --}}
-
 <!-- Edit Modal -->
 <div class="modal fade editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Edit Management Home</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('update.user') }}" method="POST" id="update-user" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <div class="card"
+                style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                <div class="text-center mb-2">
+                    <h3 class="font-weight-bold mt-5">EDIT DATA ADMIN
+                    </h3>
+                </div>
+                <div class="card-body mt-2">
+                    <div class="modal-content">
+
+                        <form action="{{ route('update.user') }}" method="POST" id="update-user" enctype="multipart/form-data">
+                            @csrf
                         <input type="hidden" name="user_id">
-                        <label for="name">Edit Nama Admin</label>
-                        <input type="text" class="form-control" id="name" name="name">
-                        <span class="text-danger error-text name_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Edit Alamat Email Admin</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                        <span class="text-danger error-text email_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Edit Foto - Kosongkan Bila Sama</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="foto">Pilih Foto</label>
-                            <span class="text-danger error-text foto_error"></span>
+
+                                <div class="mb-3">
+                                    <label for="name" class="form-label h6 font-weight-bold">Edit Nama Admin</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-id-card-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="name" name="name">
+                                    </div>
+                                    <span class="text-danger error-text name_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label h6 font-weight-bold">Edit Email
+                                        Admin</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-envelope ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="email" id="email" class="form-control input-custom" name="email" />
+                                    </div>
+                                    <span class="text-danger error-text email_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="foto" class="form-label h6 font-weight-bold">Edit Foto - Kosongkan Bila Sama</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-image ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" id="foto" class="form-control input-custom" name="foto"/>
+                                        </div>
+                                        <span class="text-danger error-text foto_error"></span>
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
                         </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -239,7 +316,7 @@ User Admin
                         $.each(data.error, function (prefix, val) {
                             $(form).find('span.' + prefix + '_error').text(val[0]);
                         });
-                        $('#saveBtn').html('Simpan');
+                        $('#saveBtn').html('SIMPAN');
                     } else {
                         $(form)[0].reset();
                         Swal.fire({
@@ -249,7 +326,7 @@ User Admin
                             timer: 1200
                         });
                         $('#tableUser').DataTable().ajax.reload(null, false);
-                        $('#ModalAdmin').modal('hide');
+                        $('#ModalUser').modal('hide');
                         $('#saveBtn').html('Simpan');
                     }
                 }
@@ -313,7 +390,7 @@ User Admin
 
         Swal.fire({
             title: "Yakin Ingin Menghapus?",
-            text: "Anda Akan Menghapus Data Home",
+            text: "Anda Akan Menghapus Data Admin",
             icon: "warning",
             showCancelButton: true,
             showCloseButton: true,

@@ -37,7 +37,7 @@ Details
             <div class="card-header">
                 <h4 class="card-title font-weight-bold">DataTable Home
                     <button type="button" data-toggle="modal" data-target="#ModalDetails"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
+                        class="btn btn-primary float-right text-white"><i class="fas fa-plus mr-2"></i> TAMBAH DATA
                         DETAILS</button>
                 </h4>
             </div>
@@ -49,11 +49,6 @@ Details
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Subjudul</th>
-                                <th>Penjelasan 1</th>
-                                <th>Penjelasan 2</th>
-                                <th>Penjelasan 3</th>
-                                <th>Penjelasan 4</th>
-                                <th>Paragraf</th>
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -71,141 +66,291 @@ Details
 <!-- Add Modal -->
 <div class="modal fade" id="ModalDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Tambah Data Details</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('add.details') }}" method="POST" id="add-details" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="judul">Masukkan Judul Details</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                        <span class="text-danger error-text judul_error"></span>
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">TAMBAH DATA DETAILS
+                        </h3>
                     </div>
-                    <div class="form-group">
-                        <label for="subjudul">Masukkan Subjudul Details</label>
-                        <input type="text" class="form-control" id="subjudul" name="subjudul">
-                        <span class="text-danger error-text subjudul_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan1">Masukkan Penjelasan Pertama</label>
-                        <input type="text" class="form-control" id="penjelasan1" name="penjelasan1">
-                        <span class="text-danger error-text penjelasan1_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan2">Masukkan Penjelasan Kedua</label>
-                        <input type="text" class="form-control" id="penjelasan2" name="penjelasan2">
-                        <span class="text-danger error-text penjelasan2_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan3">Masukkan Penjelasan Ketiga</label>
-                        <input type="text" class="form-control" id="penjelasan3" name="penjelasan3">
-                        <span class="text-danger error-text penjelasan3_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan4">Masukkan Penjelasan Keempat</label>
-                        <input type="text" class="form-control" id="penjelasan4" name="penjelasan4">
-                        <span class="text-danger error-text penjelasan4_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="paragraf">Masukkan Paragraf</label>
-                        <input type="text" class="form-control" id="paragraf" name="paragraf">
-                        <span class="text-danger error-text paragraf_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Masukkan Foto</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="image">Pilih Foto</label>
-                            <span class="text-danger error-text image_error"></span>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('add.details') }}" method="POST" id="add-details" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label h6 font-weight-bold">Masukkan Judul
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-heading ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="judul" name="judul">
+                                    </div>
+                                    <span class="text-danger error-text judul_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subjudul" class="form-label h6 font-weight-bold">Masukkan Subjudul
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-comment-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="subjudul" class="form-control input-custom"
+                                            name="subjudul" />
+                                    </div>
+                                    <span class="text-danger error-text subjudul_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan1" class="form-label h6 font-weight-bold">Masukkan Penjelasan 1
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-sticky-note ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan1" class="form-control input-custom"
+                                            name="penjelasan1" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan1_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan2" class="form-label h6 font-weight-bold">Masukkan Penjelasan 2
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-sticky-note ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan2" class="form-control input-custom"
+                                            name="penjelasan2" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan2_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan3" class="form-label h6 font-weight-bold">Masukkan Penjelasan 3
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-sticky-note ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan3" class="form-control input-custom"
+                                            name="penjelasan3" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan3_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan4" class="form-label h6 font-weight-bold">Masukkan Penjelasan 4
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-sticky-note ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan4" class="form-control input-custom"
+                                            name="penjelasan4" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan4_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="paragraf" class="form-label h6 font-weight-bold">Masukkan Paragraf
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-paragraph ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="paragraf" class="form-control input-custom"
+                                            name="paragraf" />
+                                    </div>
+                                    <span class="text-danger error-text paragraf_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label h6 font-weight-bold">Masukkan Foto</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-image ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" id="image" class="form-control input-custom" name="image"
+                                            onchange="previewFile(this)" />
+                                    </div>
+                                    <span class="text-danger error-text image_error"></span>
+                                    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
                         </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-{{-- @include('admin.home.edit') --}}
-
 <!-- Edit Modal -->
 <div class="modal fade editDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Edit Management Home</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('update.details') }}" method="POST" id="update-details" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">EDIT MANAGEMENT DETAILS
+                        </h3>
+                    </div>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('update.details') }}" method="POST" id="update-details" enctype="multipart/form-data">
+                                @csrf
                         <input type="hidden" name="details_id">
-                        <label for="judul">Edit Judul Details</label>
-                        <input type="text" class="form-control" id="judul" name="judul">
-                        <span class="text-danger error-text judul_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="subjudul">Edit Subjudul Details</label>
-                        <input type="text" class="form-control" id="subjudul" name="subjudul">
-                        <span class="text-danger error-text subjudul_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan1">Edit Penjelasan Pertama</label>
-                        <input type="text" class="form-control" id="penjelasan1" name="penjelasan1">
-                        <span class="text-danger error-text penjelasan1_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan2">Edit Penjelasan Kedua</label>
-                        <input type="text" class="form-control" id="penjelasan2" name="penjelasan2">
-                        <span class="text-danger error-text penjelasan2_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan3">Edit Penjelasan Ketiga</label>
-                        <input type="text" class="form-control" id="penjelasan3" name="penjelasan3">
-                        <span class="text-danger error-text penjelasan3_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="penjelasan4">Edit Penjelasan Keempat</label>
-                        <input type="text" class="form-control" id="penjelasan4" name="penjelasan4">
-                        <span class="text-danger error-text penjelasan4_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="paragraf">Edit Paragraf</label>
-                        <input type="text" class="form-control" id="paragraf" name="paragraf">
-                        <span class="text-danger error-text paragraf_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Edit Foto - Kosongkan Bila Sama</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="image">Pilih Foto</label>
-                            <span class="text-danger error-text image_error"></span>
+                                <div class="mb-3">
+                                    <label for="judul" class="form-label h6 font-weight-bold">Edit Judul
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-heading ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="judul" name="judul">
+                                    </div>
+                                    <span class="text-danger error-text judul_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subjudul" class="form-label h6 font-weight-bold">Edit Subjudul
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-comment-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="subjudul" class="form-control input-custom"
+                                            name="subjudul" />
+                                    </div>
+                                    <span class="text-danger error-text subjudul_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan1" class="form-label h6 font-weight-bold">Edit Penjelasan 1
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                                                                <i class="fas fa-sticky-note ml-1"></i>
+
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan1" class="form-control input-custom"
+                                            name="penjelasan1" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan1_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan2" class="form-label h6 font-weight-bold">Edit Penjelasan 2
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                                                                <i class="fas fa-sticky-note ml-1"></i>
+
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan2" class="form-control input-custom"
+                                            name="penjelasan2" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan2_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan3" class="form-label h6 font-weight-bold">Edit Penjelasan 3
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                                                                <i class="fas fa-sticky-note ml-1"></i>
+
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan3" class="form-control input-custom"
+                                            name="penjelasan3" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan3_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="penjelasan4" class="form-label h6 font-weight-bold">Edit Penjelasan 4
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                                                                <i class="fas fa-sticky-note ml-1"></i>
+
+                                            </div>
+                                        </div>
+                                        <input type="text" id="penjelasan4" class="form-control input-custom"
+                                            name="penjelasan4" />
+                                    </div>
+                                    <span class="text-danger error-text penjelasan4_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="paragraf" class="form-label h6 font-weight-bold">Edit Paragraf
+                                        Details</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-paragraph ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" id="paragraf" class="form-control input-custom"
+                                            name="paragraf" />
+                                    </div>
+                                    <span class="text-danger error-text paragraf_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label h6 font-weight-bold">Edit Foto - Kosongkan Bila Sama</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-image ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" id="image" class="form-control input-custom" name="image"
+                                            onchange="previewFile(this)" />
+                                    </div>
+                                    <span class="text-danger error-text image_error"></span>
+                                    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
                         </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -252,26 +397,6 @@ Details
                     name: 'subjudul'
                 },
                 {
-                    data: 'penjelasan1',
-                    name: 'penjelasan1'
-                },
-                {
-                    data: 'penjelasan2',
-                    name: 'penjelasan2'
-                },
-                {
-                    data: 'penjelasan3',
-                    name: 'penjelasan3'
-                },
-                {
-                    data: 'penjelasan4',
-                    name: 'penjelasan4'
-                },
-                {
-                    data: 'paragraf',
-                    name: 'paragraf'
-                },
-                {
                     data: 'image',
                     name: 'image'
                 },
@@ -304,7 +429,7 @@ Details
                         $.each(data.error, function (prefix, val) {
                             $(form).find('span.' + prefix + '_error').text(val[0]);
                         });
-                        $('#saveBtn').html('Simpan');
+                        $('#saveBtn').html('SIMPAN');
                     } else {
                         $(form)[0].reset();
                         Swal.fire({
@@ -388,7 +513,7 @@ Details
 
         Swal.fire({
             title: "Yakin Ingin Menghapus?",
-            text: "Anda Akan Menghapus Data Home",
+            text: "Anda Akan Menghapus Data Details",
             icon: "warning",
             showCancelButton: true,
             showCloseButton: true,

@@ -37,7 +37,7 @@ Contact
             <div class="card-header">
                 <h4 class="card-title font-weight-bold">DataTable Contact
                     <button type="button" data-toggle="modal" data-target="#ModalContact"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-book mr-2"></i> TAMBAH DATA
+                        class="btn btn-primary float-right text-white"><i class="fas fa-plus mr-2"></i> TAMBAH DATA
                         CONTACT</button>
                 </h4>
             </div>
@@ -50,7 +50,6 @@ Contact
                                 <th>Deskripsi Lokasi</th>
                                 <th>Alamat Email</th>
                                 <th>No Telepon</th>
-                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,101 +66,143 @@ Contact
 <!-- Add Modal -->
 <div class="modal fade" id="ModalContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Tambah Data Contact</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('add.contact') }}" method="POST" id="add-contact" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="deskripsi_lokasi">Masukkan Deskripsi Lokasi</label>
-                        <input type="text" class="form-control" id="deskripsi_lokasi" name="deskripsi_lokasi">
-                        <span class="text-danger error-text deskripsi_lokasi_error"></span>
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">TAMBAH DATA CONTACT
+                        </h3>
                     </div>
-                    <div class="form-group">
-                        <label for="alamat_email">Masukkan Alamat Email</label>
-                        <input type="email" class="form-control" id="alamat_email" name="alamat_email">
-                        <span class="text-danger error-text alamat_email_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="no_telepon">Masukkan No Telepon</label>
-                        <input type="number" class="form-control" id="no_telepon" name="no_telepon">
-                        <span class="text-danger error-text no_telepon_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Masukkan Foto</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="image">Pilih Foto</label>
-                            <span class="text-danger error-text image_error"></span>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('add.contact') }}" method="POST" id="add-contact" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="deskripsi_lokasi" class="form-label h6 font-weight-bold">Masukkan Deskripsi Lokasi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-comment-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="deskripsi_lokasi" name="deskripsi_lokasi">
+                                    </div>
+                                    <span class="text-danger error-text deskripsi_lokasi_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat_email" class="form-label h6 font-weight-bold">Masukkan Alamat Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-envelope ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="email" id="alamat_email" class="form-control input-custom"
+                                            name="alamat_email" />
+                                    </div>
+                                    <span class="text-danger error-text alamat_email_error"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="no_telepon" class="form-label h6 font-weight-bold">Masukkan No Telepon</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="number" id="no_telepon" class="form-control input-custom"
+                                            name="no_telepon" />
+                                    </div>
+                                    <span class="text-danger error-text no_telepon_error"></span>
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
                         </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-{{-- @include('admin.home.edit') --}}
-
 <!-- Edit Modal -->
 <div class="modal fade editContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-primary font-weight-bold" id="exampleModalLabel">Edit Management Contact</h4>
-                <button type="reset" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 id="message" class="text-danger font-weight-bold"></h5>
-                <form action="{{ route('update.contact') }}" method="POST" id="update-contact" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <input type="hidden" name="contact_id">
-                        <label for="deskripsi_lokasi">Edit Deskripsi Lokasi</label>
-                        <input type="text" class="form-control" id="deskripsi_lokasi" name="deskripsi_lokasi">
-                        <span class="text-danger error-text deskripsi_lokasi_error"></span>
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                    <div class="text-center mb-2">
+                        <h3 class="font-weight-bold mt-5">EDIT MANAGEMENT CONTACT
+                        </h3>
                     </div>
-                    <div class="form-group">
-                        <label for="alamat_email">Edit Alamat Email</label>
-                        <input type="text" class="form-control" id="alamat_email" name="alamat_email">
-                        <span class="text-danger error-text alamat_email_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="no_telepon">Edit No Telepon</label>
-                        <input type="number" class="form-control" id="no_telepon" name="no_telepon">
-                        <span class="text-danger error-text no_telepon_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Edit Foto - Kosongkan Bila Sama</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="image">Pilih Foto</label>
-                            <span class="text-danger error-text image_error"></span>
+                    <div class="card-body mt-2">
+                        <div class="modal-content">
+                            <form action="{{ route('update.contact') }}" method="POST" id="update-contact" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="contact_id">
+                                <div class="mb-3">
+                                    <label for="deskripsi_lokasi" class="form-label h6 font-weight-bold">Masukkan Deskripsi Lokasi</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-comment-alt ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control input-custom" id="deskripsi_lokasi" name="deskripsi_lokasi">
+                                    </div>
+                                    <span class="text-danger error-text deskripsi_lokasi_error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="alamat_email" class="form-label h6 font-weight-bold">Masukkan Alamat Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-envelope ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="email" id="alamat_email" class="form-control input-custom"
+                                            name="alamat_email" />
+                                    </div>
+                                    <span class="text-danger error-text alamat_email_error"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="no_telepon" class="form-label h6 font-weight-bold">Masukkan No Telepon</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone ml-1"></i>
+                                            </div>
+                                        </div>
+                                        <input type="number" id="no_telepon" class="form-control input-custom"
+                                            name="no_telepon" />
+                                    </div>
+                                    <span class="text-danger error-text no_telepon_error"></span>
+                                </div>
+
+                                <center>
+                                    <button type="reset"
+                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px">BATALKAN</button>
+
+                                        <button type="submit"
+                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                </center>
+                            </form>
                         </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
                     </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -212,10 +253,6 @@ Contact
                     name: 'no_telepon'
                 },
                 {
-                    data: 'image',
-                    name: 'image'
-                },
-                {
                     data: 'action',
                     name: 'action'
                 }
@@ -244,7 +281,7 @@ Contact
                         $.each(data.error, function (prefix, val) {
                             $(form).find('span.' + prefix + '_error').text(val[0]);
                         });
-                        $('#saveBtn').html('Simpan');
+                        $('#saveBtn').html('SIMPAN');
                     } else {
                         $(form)[0].reset();
                         Swal.fire({
@@ -320,7 +357,7 @@ Contact
 
         Swal.fire({
             title: "Yakin Ingin Menghapus?",
-            text: "Anda Akan Menghapus Data Home",
+            text: "Anda Akan Menghapus Data Contact",
             icon: "warning",
             showCancelButton: true,
             showCloseButton: true,

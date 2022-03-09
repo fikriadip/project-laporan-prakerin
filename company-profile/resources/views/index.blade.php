@@ -29,13 +29,6 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('landing_page/assets/css/style.css')}}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Bootslander - v4.7.1
-  * Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
     @stack('link')
 
 </head>
@@ -78,7 +71,7 @@
                         <h1>{{$home->judul}} <span>{{$home->subjudul}}</span></h1>
                         <h2>{{$home->deskripsi}}</h2>
                         <div class="text-center text-lg-start">
-                            <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                            <a href="#about" class="scrollto">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -309,7 +302,7 @@
 
                     @foreach ($dataContact as $contact)
 
-                    <div class="col-lg-4" data-aos="fade-right" data-aos-delay="100">
+                    <div class="col-lg-4 mb-5" data-aos="fade-right" data-aos-delay="100">
                         <div class="info">
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
@@ -333,8 +326,10 @@
 
                     </div>
                     <div class="col-lg-8">
-                        <img src="{{ "data:image/" . $contact->imageType . ";base64," . $contact->image }}"
-                            class="img-fluid" alt="" width="500">
+                        {{-- <img src="{{ "data:image/" . $contact->imageType . ";base64," . $contact->image }}"
+                            class="img-fluid" alt="" width="500"> --}}
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1790425199783!2d106.76934431485515!3d-6.3708709953899705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efacf4ec9761%3A0xe193631df084d4ed!2sPRIMAGO%20Islamic%20Boarding%20School%20di%20Depok!5e0!3m2!1sid!2sid!4v1646831952249!5m2!1sid!2sid" width="100%" height="310" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
                     </div>
 
                     @endforeach
@@ -354,21 +349,20 @@
 
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-info">
-                            <h3>Bootslander</h3>
+                            <h3>Bimbel Primago</h3>
                             <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam
                                     excepturi quod.</em></p>
                             <p>
-                                A108 Adam Street <br>
-                                NY 535022, USA<br><br>
-                                <strong>Phone:</strong> +1 5589 55488 55<br>
-                                <strong>Email:</strong> info@example.com<br>
+                                Palem Ganda Asri, Jalan Raya Tupai Block A No 3, <br>
+                                Meruyung, Kec. Limo, Kota Depok, Jawa Barat 16516<br><br>
+                                <strong>Telepon :</strong> 0896-0282-2094<br>
+                                <strong>Email :</strong> info@example.com<br>
                             </p>
                             <div class="social-links mt-3">
                                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
                                 <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
                             </div>
                         </div>
                     </div>
