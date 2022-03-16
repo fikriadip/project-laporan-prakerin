@@ -87,7 +87,7 @@ public function updateContact(Request $request)
     $contact_id = $request->contact_id;
 
     $validator = Validator::make($request->all(),[
-        'deskripsi_lokasi'=>'required|max:70',
+        'deskripsi_lokasi'=>'required|max:255',
         'alamat_email' => 'required|max:30',
         'no_telepon' => 'required|digits:12|max:18',
     ],[

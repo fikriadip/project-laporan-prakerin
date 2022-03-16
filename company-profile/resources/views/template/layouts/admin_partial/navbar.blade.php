@@ -28,8 +28,12 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar">
+									@if (Auth::user()->foto == 'avatar_default.png')
+							<img src="{{asset('images/avatar_default.png')}}" class="avatar-img rounded-circle" loading="lazy" alt="Foto Admin">
+							@else
 									<img src="{{ "data:image/" . Auth::user()->imageType . ";base64," . Auth::user()->foto }}" alt="Foto Admin"
                         class="avatar-img rounded-circle">
+						@endif
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">

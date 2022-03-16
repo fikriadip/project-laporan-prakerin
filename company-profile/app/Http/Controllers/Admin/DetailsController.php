@@ -25,10 +25,10 @@ class DetailsController extends Controller
             'penjelasan3'=>'required|min:40|max:80',
             'penjelasan4'=>'required|min:40|max:80',
             'paragraf'=>'required|min:40|max:320',
-            'image' => 'required|image|max:2048|mimes:jpg,png,jpeg,svg',
+            'image' => 'required|image|max:2048|mimes:jpg,png,jpeg',
         ],[
             'required' => ':attribute Tidak Boleh Kosong',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
             'max' => ':attribute Tidak Boleh Lebih Dari :max',
             'min' =>  ':attribute Minimal :min Karakter'
         ]);
@@ -125,10 +125,11 @@ public function updateDetails(Request $request)
         'penjelasan2'=>'required|min:40|max:80',
         'penjelasan3'=>'required|min:40|max:80',
         'penjelasan4'=>'required|min:40|max:80',
-        'paragraf'=>'required|min:40|max:320',
+        'paragraf'=>'required|min:40|max:800',
+        'image' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
     ],[
         'required' => ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
         'max' => ':attribute Tidak Boleh Lebih Dari :max',
         'min' =>  ':attribute Minimal :min Karakter'
     ]);

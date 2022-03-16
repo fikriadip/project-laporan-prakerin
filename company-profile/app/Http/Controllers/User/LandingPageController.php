@@ -10,6 +10,7 @@ use App\Models\DeskripsiAbout;
 use App\Models\Detail;
 use App\Models\Team;
 use App\Models\Faq;
+use App\Models\Pricing;
 use App\Models\Contact;
 
 
@@ -22,9 +23,10 @@ class LandingPageController extends Controller
         $dataDeskAbout = DeskripsiAbout::paginate(3);
         $dataDetails = Detail::paginate(1);
         $dataTeam = Team::all();
+        $dataPricing = Pricing::paginate(4);
         $dataFaq = Faq::all();
-        $dataContact = Contact::all();
+        $dataContact = Contact::paginate(1);
 
-        return view('index',compact('dataHome', 'dataAbout', 'dataDeskAbout', 'dataDetails', 'dataTeam', 'dataFaq', 'dataContact'));
+        return view('index',compact('dataHome', 'dataAbout', 'dataDeskAbout', 'dataDetails', 'dataTeam',  'dataPricing', 'dataFaq', 'dataContact'));
     }
 }

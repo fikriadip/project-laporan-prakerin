@@ -21,10 +21,10 @@ class HomeController extends Controller
             'judul'=>'required|min:20|max:40',
             'subjudul'=>'required|min:8|max:16',
             'deskripsi'=>'required|min:20',
-            'image' => 'required|image|max:2048|mimes:jpg,png,jpeg,svg',
+            'image' => 'required|image|max:2048|mimes:jpg,png,jpeg',
         ],[
             'required' => ':attribute Tidak Boleh Kosong',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
             'max' => ':attribute Tidak Boleh Lebih Dari :max',
             'min' =>  ':attribute Minimal :min Karakter'
         ]);
@@ -105,9 +105,10 @@ public function updateHome(Request $request)
         'judul'=>'required|min:20|max:40',
         'subjudul'=>'required|min:8|max:16',
         'deskripsi'=>'required|min:20',
+        'image' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
     ],[
         'required' => ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
         'max' => ':attribute Tidak Boleh Lebih Dari :max',
         'min' =>  ':attribute Minimal :min Karakter'
     ]);

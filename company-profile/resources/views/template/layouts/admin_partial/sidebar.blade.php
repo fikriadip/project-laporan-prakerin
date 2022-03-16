@@ -4,8 +4,12 @@
 		        <div class="sidebar-content">
 		            <div class="user">
 		                <div class="avatar-sm float-left mr-2">
-								<img src="{{ "data:image/" . Auth::user()->imageType . ";base64," . Auth::user()->foto }}" alt="Foto Admin"
-                        class="avatar-img rounded-circle">
+							@if (Auth::user()->foto == 'avatar_default.png')
+							<img src="{{asset('images/avatar_default.png')}}" class="avatar-img rounded-circle" loading="lazy" alt="Foto Admin">
+							@else
+							<img src="{{ "data:image/" . Auth::user()->imageType . ";base64," . Auth::user()->foto }}" alt="Foto Admin"
+					class="avatar-img rounded-circle">	
+							@endif
 		                </div>
 		                <div class="info">
 		                    <a>

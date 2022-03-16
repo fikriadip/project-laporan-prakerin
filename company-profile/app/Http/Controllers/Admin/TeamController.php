@@ -20,10 +20,10 @@ class TeamController extends Controller
         $validator = Validator::make($request->all(),[
             'nama'=>'required|min:5|max:40',
             'jabatan'=>'required|min:4|max:30',
-            'foto' => 'required|image|max:2048|mimes:jpg,png,jpeg,svg',
+            'foto' => 'required|image|max:2048|mimes:jpg,png,jpeg',
         ],[
             'required' => ':attribute Tidak Boleh Kosong',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
             'max' => ':attribute Tidak Boleh Lebih Dari :max',
             'min' =>  ':attribute Minimal :min Karakter'
         ]);
@@ -103,9 +103,10 @@ public function updateTeam(Request $request)
     $validator = Validator::make($request->all(),[
         'nama'=>'required|min:5|max:40',
         'jabatan'=>'required|min:4|max:30',
+        'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
     ],[
         'required' => ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
         'max' => ':attribute Tidak Boleh Lebih Dari :max',
         'min' =>  ':attribute Minimal :min Karakter'
     ]);

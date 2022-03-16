@@ -24,11 +24,11 @@ class UserController extends Controller
             'email' => 'required|min:4|max:50|email|unique:users',
             'password' => 'required|min:8|string|required_with:confirm_password|same:confirm_password',
             'confirm_password' => 'required|min:8',
-            'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg,svg',
+            'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
         ],[
             'required' =>  ':attribute Tidak Boleh Kosong',
             'same' =>  'Konfirmasi Password Harus Sama',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
             'min' =>  ':attribute Minimal :min Karakter',
             'max' =>  ':attribute Maksimal :max Karakter',
             'unique' => ':attribute Sudah Digunakan'
@@ -120,10 +120,11 @@ public function updateUser(Request $request)
 
     $validator = Validator::make($request->all(),[
         'name' => 'required|string|max:120',
-        'email' => 'required|min:4|max:50|unique:users,email,'.$user_id
+        'email' => 'required|min:4|max:50|unique:users,email,'.$user_id,
+        'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg'
     ],[
         'required' =>  ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg, svg',
+        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
         'min' =>  ':attribute Minimal :min Karakter',
         'max' =>  ':attribute Maksimal :max Karakter',
         'unique' => ':attribute Sudah Digunakan'

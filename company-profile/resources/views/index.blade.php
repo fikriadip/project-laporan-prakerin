@@ -17,6 +17,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
+
     <!-- Vendor CSS Files -->
     <link href="{{asset('landing_page/assets/vendor/aos/aos.css')}}" rel="stylesheet">
     <link href="{{asset('landing_page/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -71,7 +72,7 @@
                         <h1>{{$home->judul}} <span>{{$home->subjudul}}</span></h1>
                         <h2>{{$home->deskripsi}}</h2>
                         <div class="text-center text-lg-start">
-                            <a href="#about" class="scrollto">Get Started</a>
+                            <a href="#about" class="btn-get-started scrollto">Get Started</a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +124,7 @@
 
                         @foreach ($dataDeskAbout as $deskAbout)
                         <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="icon"><i class="bx bx-check"></i></div>
+                            <div class="icon"><i class="bx bx-list-check"></i></div>
                             <h4 class="title"><a>{{ $deskAbout->judul }}</a></h4>
                             <p class="description">{{ $deskAbout->deskripsi }}</p>
                         </div>
@@ -141,11 +142,33 @@
 
                 @foreach ($dataDetails as $details)
                 <div class="row content">
-                    <div class="col-md-4" data-aos="fade-right">
+                    <div class="col-md-4" data-aos="fade-left">
                         <img src="{{ "data:image/" . $details->imageType . ";base64," . $details->image }}"
                             class="img-fluid" alt="Foto Details">
                     </div>
                     <div class="col-md-8 pt-4" data-aos="fade-up">
+                        <h3>{{ $details->judul }}</h3>
+                        <p class="fst-italic">
+                            {{ $details->subjudul }}
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check"></i>{{ $details->penjelasan1 }}</li>
+                            <li><i class="bi bi-check"></i>{{ $details->penjelasan2 }}</li>
+                            <li><i class="bi bi-check"></i>{{ $details->penjelasan3 }}</li>
+                            <li><i class="bi bi-check"></i>{{ $details->penjelasan4 }}</li>
+                        </ul>
+                        <p>
+                            {{ $details->paragraf }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row content">
+                    <div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
+                        <img src="{{ "data:image/" . $details->imageType . ";base64," . $details->image }}"
+                            class="img-fluid" alt="Foto Details">
+                    </div>
+                    <div class="col-md-8 pt-5 order-2 order-md-1" data-aos="fade-up">
                         <h3>{{ $details->judul }}</h3>
                         <p class="fst-italic">
                             {{ $details->subjudul }}
@@ -201,30 +224,33 @@
                     <h2>Team</h2>
                     <p>Our Great Team</p>
                 </div>
-
-                <div class="row" data-aos="fade-left">
-
-                    @foreach ($dataTeam as $team)
-                    <div class="col-lg-3 col-md-6">
-                        <div class="member" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="pic"><img
-                                    src="{{ "data:image/" . $team->imageType . ";base64," . $team->foto }}"
-                                    class="img-fluid" alt=""></div>
-                            <div class="member-info">
-                                <h4>{{ $team->nama }}</h4>
-                                <span>{{ $team->jabatan }}</span>
+                <div class="team-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="row" data-aos="fade-left">
+                                @foreach ($dataTeam as $team)
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <div class="member" data-aos="zoom-in" data-aos-delay="100">
+                                        <div class="pic"><img
+                                                src="{{ "data:image/" . $team->imageType . ";base64," . $team->foto }}"
+                                                class="img-fluid" alt=""></div>
+                                        <div class="member-info">
+                                            <h4>{{ $team->nama }}</h4>
+                                            <span>{{ $team->jabatan }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
             </div>
-
-            </div>
-        </section><!-- End Team Section -->
+        </section>
+        <!-- End Team Section -->
 
         <!-- ======= Pricing Section ======= -->
-        <section id="pricing" class="pricing">
+        {{-- <section id="pricing" class="pricing">
             <div class="container">
 
                 <div class="section-title" data-aos="fade-up">
@@ -233,27 +259,63 @@
                 </div>
 
                 <div class="row" data-aos="fade-left">
-
+                    @foreach ($dataPricing as $pricing)
                     <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
                         <div class="box featured" data-aos="zoom-in" data-aos-delay="200">
-                            <h3>Business</h3>
-                            <h4><sup>$</sup>19<span> / month</span></h4>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi rerum non ex dolorum,
-                                soluta sint assumenda enim pariatur quibusdam! Vero commodi est aspernatur, nemo
-                                doloribus nisi accusantium quasi praesentium quisquam!</p>
-                            {{-- <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul> --}}
-                            <div class="btn-wrap">
-                                <a href="#" class="btn-buy">Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
+                            <h3>{{ $pricing->judul }}</h3>
+        <h4>IDR {{ $pricing->harga }}</h4>
+        <p>{{ $pricing->deskripsi }}</p>
+        <div class="btn-wrap">
+            <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+        </div>
+        </div>
+        @endforeach
 
+        </div>
+
+        </div>
+        </section> --}}
+        <!-- End Pricing Section -->
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Pricing</h2>
+                    <p>Check our Pricing</p>
+                </div>
+
+                <div class="row gy-4">
+
+                    @foreach ($dataPricing as $pricing)
+                    <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="pricing-item featured">
+
+                            <div class="pricing-header">
+                                <h3>{{ $pricing->judul }}</h3>
+                                {{-- <h4>IDR {{ $pricing->harga }}</span></h4> --}}
+                <h4><sup>IDR</sup>{{ $pricing->harga }}<span> / month</span></h4>
+                            </div>
+
+                            <ul>
+                                <li><span class="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                        At facilis reiciendis provident fugit voluptates consequuntur, blanditiis, nobis
+                                        inventore sapiente consequatur iste. Id voluptas ipsa impedit voluptatem
+                                        aspernatur nobis animi inventore repudiandae numquam expedita earum culpa
+                                        voluptatibus harum, fugiat eius necessitatibus, magnam est, molestiae sequi
+                                        veritatis dolore cupiditate. Ut, ab laboriosam?</span>
+                                </li>
+                            </ul>
+
+                            <div class="text-center mt-auto">
+                                <a href="#" class="buy-btn">Buy Now</a>
+                            </div>
+
+                        </div>
+                    </div><!-- End Pricing Item -->
+                    @endforeach
                 </div>
 
             </div>
@@ -273,10 +335,10 @@
                         @foreach ($dataFaq as $faq)
                         <li data-aos="fade-up">
                             <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
-                                data-bs-target="#faq-list-1">{{ $faq->pertanyaan }} <i
+                                data-bs-target="#faq-list-{{ $faq->id }}">{{ $faq->pertanyaan }} <i
                                     class="bx bx-chevron-down icon-show"></i><i
                                     class="bx bx-chevron-up icon-close"></i></a>
-                            <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                            <div id="faq-list-{{$faq->id}}" class="collapse" data-bs-parent=".faq-list">
                                 <p>
                                     {{ $faq->jawaban }}
                                 </p>
@@ -326,14 +388,13 @@
 
                     </div>
                     <div class="col-lg-8">
-                        {{-- <img src="{{ "data:image/" . $contact->imageType . ";base64," . $contact->image }}"
-                            class="img-fluid" alt="" width="500"> --}}
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1790425199783!2d106.76934431485515!3d-6.3708709953899705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efacf4ec9761%3A0xe193631df084d4ed!2sPRIMAGO%20Islamic%20Boarding%20School%20di%20Depok!5e0!3m2!1sid!2sid!4v1646831952249!5m2!1sid!2sid" width="100%" height="310" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.1790425199783!2d106.76934431485515!3d-6.3708709953899705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69efacf4ec9761%3A0xe193631df084d4ed!2sPRIMAGO%20Islamic%20Boarding%20School%20di%20Depok!5e0!3m2!1sid!2sid!4v1646831952249!5m2!1sid!2sid"
+                            width="100%" height="310" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
 
                     @endforeach
-                    
+
                 </div>
 
             </div>
@@ -353,16 +414,20 @@
                             <p class="pb-3"><em>Qui repudiandae et eum dolores alias sed ea. Qui suscipit veniam
                                     excepturi quod.</em></p>
                             <p>
-                                Palem Ganda Asri, Jalan Raya Tupai Block A No 3, <br>
-                                Meruyung, Kec. Limo, Kota Depok, Jawa Barat 16516<br><br>
+                                Kawasan Palem Ganda Asri, Blok A2 No. 1, <br>
+                                Meruyung, Limo, Kota Depok, Jawa Barat<br><br>
                                 <strong>Telepon :</strong> 0896-0282-2094<br>
-                                <strong>Email :</strong> info@example.com<br>
+                                <strong>Email :</strong> primagoschool@gmail.com<br>
                             </p>
                             <div class="social-links mt-3">
-                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="youtube"><i class="bx bxl-youtube"></i></a>
+                                <a href="https://twitter.com/bimbelPRIMAGO" class="twitter" target="_blank"><i
+                                        class="bx bxl-twitter"></i></a>
+                                <a href="https://web.facebook.com/BimbelMasukGontor?_rdc=1&_rdr" class="facebook"
+                                    target="_blank"><i class="bx bxl-facebook"></i></a>
+                                <a href="https://www.instagram.com/bimbelprimago/" class="instagram" target="_blank"><i
+                                        class="bx bxl-instagram"></i></a>
+                                <a href="https://www.youtube.com/channel/UCholBpqqBBc8ZvM95KbZePg" class="youtube"
+                                    target="_blank"><i class="bx bxl-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -381,9 +446,8 @@
                     <div class="col-lg-2 col-md-6 footer-links">
                         <h4>Our Services</h4>
                         <ul>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Tour & Travel</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a href="#">Internship</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
                             <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
                         </ul>
@@ -401,13 +465,9 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Bimbel Primago</span></strong>. All Rights Reserved
+                &copy; 2022 <strong><span>Bimbel Primago</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/ -->
                 Designed by Primago
             </div>
         </div>
@@ -423,7 +483,6 @@
     <script src="{{asset('landing_page/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('landing_page/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
     <script src="{{asset('landing_page/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-    <script src="{{asset('landing_page/assets/vendor/php-email-form/validate.js')}}"></script>
 
     <!-- Template Main JS File -->
     <script src="{{asset('landing_page/assets/js/main.js')}}"></script>
