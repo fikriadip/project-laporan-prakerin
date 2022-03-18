@@ -21,9 +21,12 @@ class FaqController extends Controller
             'pertanyaan'=>'required|min:35|max:100',
             'jawaban'=>'required|min:100|max:400',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter'
+            'pertanyaan.required' => 'Pertanyaan Tidak Boleh Kosong',
+            'jawaban.required' => 'Jawaban Tidak Boleh Kosong',
+            'pertanyaan.max' => 'Pertanyaan Tidak Boleh Lebih Dari :max Karakter',
+            'jawaban.max' => 'Jawaban Tidak Boleh Lebih Dari :max Karakter',
+            'pertanyaan.min' =>  'Pertanyaan Minimal :min Karakter',
+            'jawaban.min' =>  'Jawaban Minimal :min Karakter'
         ]);
 
         if(!$validator->passes()){
@@ -57,8 +60,8 @@ class FaqController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editFaqBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Faq"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteFaqBtn" style="font-size: 16px; cursor: pointer;" title="Delete Faq"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editFaqBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Faq"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteFaqBtn" style="font-size: 16px; cursor: pointer;" title="Delete Faq"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -87,9 +90,12 @@ public function updateFaq(Request $request)
         'pertanyaan'=>'required|min:35|max:100',
         'jawaban'=>'required|min:100|max:450',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter'
+        'pertanyaan.required' => 'Pertanyaan Tidak Boleh Kosong',
+            'jawaban.required' => 'Jawaban Tidak Boleh Kosong',
+            'pertanyaan.max' => 'Pertanyaan Tidak Boleh Lebih Dari :max Karakter',
+            'jawaban.max' => 'Jawaban Tidak Boleh Lebih Dari :max Karakter',
+            'pertanyaan.min' =>  'Pertanyaan Minimal :min Karakter',
+            'jawaban.min' =>  'Jawaban Minimal :min Karakter'
     ]);
 
     if(!$validator->passes()){

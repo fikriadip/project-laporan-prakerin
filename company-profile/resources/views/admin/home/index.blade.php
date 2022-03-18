@@ -1,238 +1,234 @@
-@extends('template.master_admin')
+@extends('partial.master_admin')
 
 @section('title_web')
 Data Home Landing Page - Bimbel Primago
 @endsection
 
-@section('title_content')
-Home
-@endsection
-
-@section('breadcrumbs')
-<ul class="breadcrumbs">
-    <li class="nav-home">
-        <a href="#">
-            <i class="flaticon-home"></i>
-        </a>
-    </li>
-    <li class="separator">
-        <i class="flaticon-right-arrow"></i>
-    </li>
-    <li class="nav-item">
-        <a href="#">Data Home</a>
-    </li>
-    <li class="separator">
-        <i class="flaticon-right-arrow"></i>
-    </li>
-    <li class="nav-item">
-        <a href="#">Kelola Data Home</a>
-    </li>
-</ul>
-@endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title font-weight-bold">DataTable Home
-                    <button type="button" data-toggle="modal" data-target="#ModalHome"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-plus mr-2"></i> TAMBAH DATA
-                        HOME</button>
-                </h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tableHome" class="display table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Judul</th>
-                                <th>Subjudul</th>
-                                <th>Deskripsi</th>
-                                <th>Image</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+@section('dashboard')
+<div class="panel-header bg-primary-gradient">
+    <div class="page-inner py-5">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+            <div>
+                <h2 class="text-white pb-2 fw-bold"><i class="icon-home mr-2"></i> Home Landing Page</h2>
+                <br>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Add Modal -->
-<div class="modal fade" id="ModalHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="row">
-            <div class="col-12">
-                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
-                    <div class="text-center mb-2">
-                        <h3 class="font-weight-bold mt-5">TAMBAH DATA HOME
-                        </h3>
-                    </div>
-                    <div class="card-body mt-2">
-                        <div class="modal-content">
-                            <form action="{{ route('add.home') }}" method="POST" id="add-home"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="judul" class="form-label h6 font-weight-bold">Masukkan Judul
-                                        Home</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-heading ml-1"></i>
-                                            </div>
-                                        </div>
-                                        <input type="text" class="form-control input-custom" id="judul" name="judul">
-                                    </div>
-                                    <span class="text-danger error-text judul_error"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="subjudul" class="form-label h6 font-weight-bold">Masukkan Subjudul
-                                        Home</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-comment-alt ml-1"></i>
-                                            </div>
-                                        </div>
-                                        <input type="text" id="subjudul" class="form-control input-custom"
-                                            name="subjudul" />
-                                    </div>
-                                    <span class="text-danger error-text subjudul_error"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="deskripsi" class="form-label h6 font-weight-bold">Masukkan Deskripsi
-                                        Home</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-paragraph ml-1"></i>
-                                            </div>
-                                        </div>
-                                        <input type="text" id="deskripsi" class="form-control input-custom"
-                                            name="deskripsi" />
-                                    </div>
-                                    <span class="text-danger error-text deskripsi_error"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="foto" class="form-label h6 font-weight-bold">Masukkan Foto</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-image ml-1"></i>
-                                            </div>
-                                        </div>
-                                        <input type="file" id="image" class="form-control input-custom" name="image"
-                                            onchange="previewFile(this)" />
-                                    </div>
-                                    <span class="text-danger error-text image_error"></span>
-                                    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
-                                </div>
+<div class="page-inner mt--5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title font-weight-bold">Data Home
+                        <button type="button" data-toggle="modal" data-target="#ModalHome"
+                            class="btn btn-primary float-right btn-round text-white"><i class="fas fa-plus mr-2"></i>
+                            TAMBAH DATA
+                            HOME</button>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tableHome" class="display table table-striped table-hover bg-light">
+                            <thead>
+                                <tr class="text-center text-primary">
+                                    <th>No</th>
+                                    <th>Judul</th>
+                                    <th>Subjudul</th>
+                                    <th>Deskripsi</th>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                                <center>
-                                    <button type="reset"
-                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
-                                        style="font-size: 18px">BATALKAN</button>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="ModalHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card"
+                        style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                        <div class="text-center mb-2">
+                            <h3 class="font-weight-bold mt-5">TAMBAH DATA HOME
+                            </h3>
+                        </div>
+                        <div class="card-body mt-2">
+                            <div class="modal-content">
+                                <form action="{{ route('add.home') }}" method="POST" id="add-home"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <label for="judul" class="form-label h6 font-weight-bold">Masukkan Judul
+                                            Home</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-heading ml-1"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control input-custom" id="judul"
+                                                name="judul">
+                                        </div>
+                                        <span class="text-danger error-text judul_error"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="subjudul" class="form-label h6 font-weight-bold">Masukkan Subjudul
+                                            Home</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-comment-alt ml-1"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text" id="subjudul" class="form-control input-custom"
+                                                name="subjudul" />
+                                        </div>
+                                        <span class="text-danger error-text subjudul_error"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="deskripsi" class="form-label h6 font-weight-bold">Masukkan Deskripsi
+                                            Home</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-paragraph ml-1"></i>
+                                                </div>
+                                            </div>
+                                            <input type="text" id="deskripsi" class="form-control input-custom"
+                                                name="deskripsi" />
+                                        </div>
+                                        <span class="text-danger error-text deskripsi_error"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="foto" class="form-label h6 font-weight-bold">Masukkan Foto</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-image ml-1"></i>
+                                                </div>
+                                            </div>
+                                            <input type="file" id="image" class="form-control input-custom" name="image"
+                                                onchange="previewFile(this)" />
+                                        </div>
+                                        <span class="text-danger error-text image_error"></span>
+                                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+                                    </div>
+
+                                    <center>
+                                        <button type="reset"
+                                            class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                            style="font-size: 18px">BATALKAN</button>
 
                                         <button type="submit"
-                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
-                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
-                                </center>
-                            </form>
+                                            class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                            style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                    </center>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Edit Modal -->
-<div class="modal fade editHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="row">
-            <div class="col-12">
-                <div class="card" style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
-                    <div class="text-center mb-2">
-                        <h3 class="font-weight-bold mt-5">EDIT DATA HOME
-                        </h3>
-                    </div>
-                    <div class="card-body mt-2">
-                        <div class="modal-content">
-                            <form action="{{ route('update.home') }}" method="POST" id="update-home"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="home_id">
-                                <div class="mb-3">
-                                    <label for="judul" class="form-label h6 font-weight-bold">Edit Judul Home</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-heading ml-1"></i>
+    <!-- Edit Modal -->
+    <div class="modal fade editHome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card"
+                        style="border: none; box-shadow: 0 1px 41px rgba(0, 0, 0, 12%); border-radius: 16px;">
+                        <div class="text-center mb-2">
+                            <h3 class="font-weight-bold mt-5">EDIT DATA HOME
+                            </h3>
+                        </div>
+                        <div class="card-body mt-2">
+                            <div class="modal-content">
+                                <form action="{{ route('update.home') }}" method="POST" id="update-home"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="home_id">
+                                    <div class="mb-3">
+                                        <label for="judul" class="form-label h6 font-weight-bold">Edit Judul
+                                            Home</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-heading ml-1"></i>
+                                                </div>
                                             </div>
+                                            <input type="text" class="form-control input-custom" id="judul"
+                                                name="judul">
                                         </div>
-                                        <input type="text" class="form-control input-custom" id="judul" name="judul">
+                                        <span class="text-danger error-text judul_error"></span>
                                     </div>
-                                    <span class="text-danger error-text judul_error"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="subjudul" class="form-label h6 font-weight-bold">Edit Subjudul
-                                        Home</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-comment-alt ml-1"></i>
+                                    <div class="mb-3">
+                                        <label for="subjudul" class="form-label h6 font-weight-bold">Edit Subjudul
+                                            Home</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-comment-alt ml-1"></i>
+                                                </div>
                                             </div>
+                                            <input type="text" id="subjudul" class="form-control input-custom"
+                                                name="subjudul" />
                                         </div>
-                                        <input type="text" id="subjudul" class="form-control input-custom"
-                                            name="subjudul" />
+                                        <span class="text-danger error-text subjudul_error"></span>
                                     </div>
-                                    <span class="text-danger error-text subjudul_error"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="deskripsi" class="form-label h6 font-weight-bold">Edit Deskripsi
-                                        Home</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-paragraph ml-1"></i>
+                                    <div class="mb-3">
+                                        <label for="deskripsi" class="form-label h6 font-weight-bold">Edit Deskripsi
+                                            Home</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-paragraph ml-1"></i>
+                                                </div>
                                             </div>
+                                            <input type="text" id="deskripsi" class="form-control input-custom"
+                                                name="deskripsi" />
                                         </div>
-                                        <input type="text" id="deskripsi" class="form-control input-custom"
-                                            name="deskripsi" />
+                                        <span class="text-danger error-text deskripsi_error"></span>
                                     </div>
-                                    <span class="text-danger error-text deskripsi_error"></span>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="image" class="form-label h6 font-weight-bold">Edit Foto - Kosongkan Bila
-                                        Sama</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">
-                                                <i class="fas fa-image ml-1"></i>
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label h6 font-weight-bold">Edit Foto - Kosongkan
+                                            Bila
+                                            Sama</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <i class="fas fa-image ml-1"></i>
+                                                </div>
                                             </div>
+                                            <input type="file" id="image" class="form-control input-custom"
+                                                name="image" />
                                         </div>
-                                        <input type="file" id="image" class="form-control input-custom" name="image" />
+                                        <span class="text-danger error-text image_error"></span>
                                     </div>
-                                    <span class="text-danger error-text image_error"></span>
-                                </div>
 
-                                <center>
-                                    <button type="reset"
-                                        class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
-                                        style="font-size: 18px">BATALKAN</button>
+                                    <center>
+                                        <button type="button"
+                                            class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                            data-dismiss="modal" aria-label="Close"
+                                            style="font-size: 18px">BATALKAN</button>
 
                                         <button type="submit"
-                                        class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
-                                        style="font-size: 18px" id="saveBtn">SIMPAN</button>
-                                </center>
-                            </form>
+                                            class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
+                                            style="font-size: 18px" id="saveBtn">SIMPAN</button>
+                                    </center>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

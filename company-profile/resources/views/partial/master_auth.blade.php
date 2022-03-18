@@ -14,10 +14,7 @@
 <body>
     @yield('content')
 
-	<!-- Axios -->
-	<script src="{{asset('js/api.js')}}"></script>
-	<script src="{{asset('js/axios.min.js')}}"></script>
-	<script src="{{asset('js/sweetalert.js')}}"></script>
+    <script src="{{asset('js/sweetalert.js')}}"></script>
     <script src="{{ asset('template_login/js/kit_fontawesome.min.js') }}"></script>
     <script src="{{ asset('template_login/js/app.js') }}"></script>
     @include('sweetalert::alert')

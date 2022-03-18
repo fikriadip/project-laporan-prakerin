@@ -142,28 +142,6 @@
 
                 @foreach ($dataDetails as $details)
                 <div class="row content">
-                    <div class="col-md-4" data-aos="fade-left">
-                        <img src="{{ "data:image/" . $details->imageType . ";base64," . $details->image }}"
-                            class="img-fluid" alt="Foto Details">
-                    </div>
-                    <div class="col-md-8 pt-4" data-aos="fade-up">
-                        <h3>{{ $details->judul }}</h3>
-                        <p class="fst-italic">
-                            {{ $details->subjudul }}
-                        </p>
-                        <ul>
-                            <li><i class="bi bi-check"></i>{{ $details->penjelasan1 }}</li>
-                            <li><i class="bi bi-check"></i>{{ $details->penjelasan2 }}</li>
-                            <li><i class="bi bi-check"></i>{{ $details->penjelasan3 }}</li>
-                            <li><i class="bi bi-check"></i>{{ $details->penjelasan4 }}</li>
-                        </ul>
-                        <p>
-                            {{ $details->paragraf }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row content">
                     <div class="col-md-4 order-1 order-md-2" data-aos="fade-left">
                         <img src="{{ "data:image/" . $details->imageType . ";base64," . $details->image }}"
                             class="img-fluid" alt="Foto Details">
@@ -296,7 +274,7 @@
                             <div class="pricing-header">
                                 <h3>{{ $pricing->judul }}</h3>
                                 {{-- <h4>IDR {{ $pricing->harga }}</span></h4> --}}
-                <h4><sup>IDR</sup>{{ $pricing->harga }}<span> / month</span></h4>
+                                <h4><sup>IDR</sup>{{ $pricing->harga }}<span> / month</span></h4>
                             </div>
 
                             <ul>

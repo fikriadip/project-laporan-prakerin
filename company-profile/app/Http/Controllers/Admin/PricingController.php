@@ -22,9 +22,14 @@ class PricingController extends Controller
             'harga'=>'required|min:4|max:16',
             'deskripsi'=>'required|min:15',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter'
+            'judul.required' => 'Judul Tidak Boleh Kosong',
+            'harga.required' => 'Harga Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'harga.max' => 'Harga Tidak Boleh Lebih Dari :max Karakter',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'harga.min' =>  'Harga Minimal :min Karakter',
+            'deskripsi.min' =>  'Deskripsi Minimal :min Karakter'
         ]);
 
         if(!$validator->passes()){
@@ -59,8 +64,8 @@ class PricingController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editPricingBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Pricing"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deletePricingBtn" style="font-size: 16px; cursor: pointer;" title="Delete Pricing"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editPricingBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Pricing"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deletePricingBtn" style="font-size: 16px; cursor: pointer;" title="Delete Pricing"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -90,9 +95,14 @@ public function updatePricing(Request $request)
         'harga'=>'required|min:4|max:16',
         'deskripsi'=>'required|min:15',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter'
+        'judul.required' => 'Judul Tidak Boleh Kosong',
+            'harga.required' => 'Harga Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'harga.max' => 'Harga Tidak Boleh Lebih Dari :max Karakter',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'harga.min' =>  'Harga Minimal :min Karakter',
+            'deskripsi.min' =>  'Deskripsi Minimal :min Karakter'
     ]);
 
     if(!$validator->passes()){

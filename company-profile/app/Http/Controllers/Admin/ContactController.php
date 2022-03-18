@@ -20,12 +20,15 @@ class ContactController extends Controller
         $validator = Validator::make($request->all(),[
             'deskripsi_lokasi'=>'required|max:70',
             'alamat_email' => 'required|max:30',
-            'no_telepon' => 'required|digits:12|max:18',
+            'no_telepon' => 'required|digits:12|max:13',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter',
-            'digits' =>  ':attribute Minimal :digits Digit'
+            'deskripsi_lokasi.required' => 'Deskripsi Lokasi Tidak Boleh Kosong',
+            'alamat_email.required' => 'Alamat Email Tidak Boleh Kosong',
+            'no_telepon.required' => ' No Telepon Tidak Boleh Kosong',
+            'deskripsi_lokasi.max' => 'Deskripsi Lokasi Tidak Boleh Lebih Dari :max Karakter',
+            'alamat_email.max' => 'Alamat Email Tidak Boleh Lebih Dari :max Karakter',
+            'no_telepon.max' => 'No Telepon Tidak Boleh Lebih Dari :max Digit',
+            'no_telepon.digits' =>  'No Telepon Minimal :digits Digit'
         ]);
 
         if(!$validator->passes()){
@@ -60,8 +63,8 @@ class ContactController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editContactBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Contact"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteContactBtn" style="font-size: 16px; cursor: pointer;" title="Delete Contact"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editContactBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Contact"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteContactBtn" style="font-size: 16px; cursor: pointer;" title="Delete Contact"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -91,10 +94,13 @@ public function updateContact(Request $request)
         'alamat_email' => 'required|max:30',
         'no_telepon' => 'required|digits:12|max:18',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter',
-        'digits' =>  ':attribute Minimal :digits Digit'
+        'deskripsi_lokasi.required' => 'Deskripsi Lokasi Tidak Boleh Kosong',
+            'alamat_email.required' => 'Alamat Email Tidak Boleh Kosong',
+            'no_telepon.required' => ' No Telepon Tidak Boleh Kosong',
+            'deskripsi_lokasi.max' => 'Deskripsi Lokasi Tidak Boleh Lebih Dari :max Karakter',
+            'alamat_email.max' => 'Alamat Email Tidak Boleh Lebih Dari :max Karakter',
+            'no_telepon.max' => 'No Telepon Tidak Boleh Lebih Dari :max Digit',
+            'no_telepon.digits' =>  'No Telepon Minimal :digits Digit'
     ]);
 
     if(!$validator->passes()){

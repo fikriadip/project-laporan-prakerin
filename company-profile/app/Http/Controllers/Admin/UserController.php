@@ -20,18 +20,24 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'name' => 'required|string|max:120',
-            'email' => 'required|min:4|max:50|email|unique:users',
+            'name' => 'required|string',
+            'email' => 'required|max:50|email|unique:users',
             'password' => 'required|min:8|string|required_with:confirm_password|same:confirm_password',
             'confirm_password' => 'required|min:8',
             'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
         ],[
-            'required' =>  ':attribute Tidak Boleh Kosong',
+            'name.required' =>  'Nama Admin Tidak Boleh Kosong',
+            'email.required' =>  'Email Admin Tidak Boleh Kosong',
+            'password.required' =>  'Password Tidak Boleh Kosong',
+            'confirm_password.required' => 'Konfirmasi Password Tidak Boleh Kosong',
             'same' =>  'Konfirmasi Password Harus Sama',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-            'min' =>  ':attribute Minimal :min Karakter',
-            'max' =>  ':attribute Maksimal :max Karakter',
-            'unique' => ':attribute Sudah Digunakan'
+            'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+            'password.min' =>  'Password Minimal :min Karakter',
+            'confirm_password.min' =>  'Konfirmasi Password Minimal :min Karakter',
+            'email.max' =>  'Email Maksimal :max Karakter',
+            'foto.max' =>  'Foto Maksimal :max MB',
+            'foto.image' => 'Foto Harus Berupa Gambar',
+            'email.unique' => 'Alamat Email Sudah Digunakan'
         ]);
 
         if(!$validator->passes()){
@@ -92,8 +98,8 @@ class UserController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editUserBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Admin"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteUserBtn" style="font-size: 16px; cursor: pointer;" title="Delete Admin"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editUserBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Admin"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteUserBtn" style="font-size: 16px; cursor: pointer;" title="Delete Admin"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -119,15 +125,17 @@ public function updateUser(Request $request)
     $user_id = $request->user_id;
 
     $validator = Validator::make($request->all(),[
-        'name' => 'required|string|max:120',
-        'email' => 'required|min:4|max:50|unique:users,email,'.$user_id,
+        'name' => 'required|string',
+        'email' => 'required|max:50|unique:users,email,'.$user_id,
         'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg'
     ],[
-        'required' =>  ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-        'min' =>  ':attribute Minimal :min Karakter',
-        'max' =>  ':attribute Maksimal :max Karakter',
-        'unique' => ':attribute Sudah Digunakan'
+        'name.required' =>  'Nama Admin Tidak Boleh Kosong',
+        'email.required' =>  'Email Admin Tidak Boleh Kosong',
+        'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+        'email.max' =>  'Email Maksimal :max Karakter',
+        'foto.max' =>  'Foto Maksimal :max MB',
+        'foto.image' => 'Foto Harus Berupa Gambar',
+        'email.unique' => 'Alamat Email Sudah Digunakan'
     ]);
 
     if(!$validator->passes()){

@@ -27,15 +27,9 @@ use App\Http\Controllers\User\LandingPageController;
 
 Route::get('/', [LandingPageController::class, 'LandingPage'])->name('index');
 
-// Route::get('/admin/login', function () {
-//     return view('auth.login');
-// })->name('admin.login');
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('admin.login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('postlogin');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
-// Auth::routes();
-
 
 Route::group(['prefix'=>'admin', 'middleware'=>['auth:web','revalidate']], function () {
     

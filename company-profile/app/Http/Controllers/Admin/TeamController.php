@@ -18,14 +18,18 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'nama'=>'required|min:5|max:40',
+            'nama'=>'required',
             'jabatan'=>'required|min:4|max:30',
             'foto' => 'required|image|max:2048|mimes:jpg,png,jpeg',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter'
+            'nama.required' => 'Nama Tidak Boleh Kosong',
+            'jabatan.required' => 'Jabatan Tidak Boleh Kosong',
+            'foto.required' => 'Foto Tidak Boleh Kosong',
+            'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+            'foto.image' => 'Foto Harus Berupa Gambar',
+            'jabatan.max' => 'Jabatan Tidak Boleh Lebih Dari :max Karakter',
+            'foto.max' => 'Foto Tidak Boleh Lebih Dari :max MB',
+            'jabatan.min' =>  'Jabatan Minimal :min Karakter'
         ]);
 
         if(!$validator->passes()){
@@ -74,8 +78,8 @@ class TeamController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editTeamBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Teams"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteTeamBtn" style="font-size: 16px; cursor: pointer;" title="Delete Teams"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editTeamBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Teams"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteTeamBtn" style="font-size: 16px; cursor: pointer;" title="Delete Teams"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -105,10 +109,13 @@ public function updateTeam(Request $request)
         'jabatan'=>'required|min:4|max:30',
         'foto' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter'
+        'nama.required' => 'Nama Tidak Boleh Kosong',
+            'jabatan.required' => 'Jabatan Tidak Boleh Kosong',
+            'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+            'foto.image' => 'Foto Harus Berupa Gambar',
+            'jabatan.max' => 'Jabatan Tidak Boleh Lebih Dari :max Karakter',
+            'foto.max' => 'Foto Tidak Boleh Lebih Dari :max MB',
+            'jabatan.min' =>  'Jabatan Minimal :min Karakter'
     ]);
 
     if(!$validator->passes()){

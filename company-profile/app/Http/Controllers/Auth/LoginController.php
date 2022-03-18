@@ -34,7 +34,7 @@ class LoginController extends Controller
         $remember = $request->remember == 'on' ? true : false; // rememberme
         if (Auth::attempt($request->only('email', 'password'), $remember)) {
             if (Auth()->user()) {
-                toast('Berhasil Login Welcome Admin','success');
+                toast('Berhasil Login Welcome '.Auth::user()->name.'','success');
                 return redirect()->route('data.user');
             } 
         } else {

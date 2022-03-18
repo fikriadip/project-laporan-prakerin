@@ -8,7 +8,7 @@
     <title>@yield('title_web')</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="{{ asset('template_login/img/favicon.png') }}" />
-	
+
     <!-- Fonts and icons -->
     <script src="{{asset('template_admin/assets/js/plugin/webfont/webfont.min.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('template_admin/assets/css/fonts.min.css') }}">
@@ -40,7 +40,7 @@
 </head>
 
 <body>
-	<div class="scroll-up-btn">
+    <div class="scroll-up-btn">
         <i class="fas fa-angle-up"></i>
     </div>
     <div class="wrapper">
@@ -50,7 +50,7 @@
 
                 <a href="#" class="logo">
                     {{-- <img src="{{ asset('template_admin/assets/img/logoprimago.png') }}" alt="navbar brand"
-                        class="navbar-brand"> --}}
+                    class="navbar-brand"> --}}
                     {{-- <div class="navbar-brand text-white">SIAKAD</div> --}}
                     <h2 class="font-weight-bold text-white m-3">PRIMAGO</h2>
                 </a>
@@ -70,12 +70,12 @@
             <!-- End Logo Header -->
 
             <!-- Navbar Header -->
-            @include('template.layouts.admin_partial.navbar')
+            @include('partial.layouts.navbar')
             <!-- End Navbar -->
         </div>
 
         <!-- Sidebar -->
-        @include('template.layouts.admin_partial.sidebar')
+        @include('partial.layouts.sidebar')
         <!-- End Sidebar -->
 
         <div class="main-panel">
@@ -93,7 +93,8 @@
     </div>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="logoutModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -103,14 +104,15 @@
                         <span aria-hidden="true">x</span>
                     </button>
                 </div>
-                <div class="modal-body">Pilih Logout di bawah ini jika anda siap untuk mengakhiri sesi anda saat ini.
+                <div class="modal-body">Pilih Logout di bawah ini jika siap untuk mengakhiri sesi saat ini.
                     Pilih Cancel jika tidak ingin mengakhiri sesi.</div>
                 <div class="modal-footer">
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button class="btn btn-primary mr-2" type="submit" data-dismiss="modal"><i
-                                class="fas fa-window-close has-icon mr-2"></i>Cancel</button>
+                        <button class="btn mr-2" type="submit" data-dismiss="modal"
+                            style="background-color: #1572e8; color: #fff;"><i
+                                class="fas fa-window-close has-icon mr-2 text-white"></i>Cancel</button>
                         <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                     this.closest('form').submit();"><i class="fa fa-power-off has-icon mr-2"></i>Logout</a>
                     </form>
@@ -120,14 +122,14 @@
 
     </div>
 
-	<!-- CK Editor -->
+    <!-- CK Editor -->
     <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 
     {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <!-- Axios -->
-	<script src="{{asset('js/api.js')}}"></script>
-	<script src="{{asset('js/axios.min.js')}}"></script>
-	<script src="{{asset('js/sweetalert.js')}}"></script>
+    <script src="{{asset('js/api.js')}}"></script>
+    <script src="{{asset('js/axios.min.js')}}"></script>
+    <script src="{{asset('js/sweetalert.js')}}"></script>
 
     <!--   Core JS Files   -->
     <script src="{{asset('template_admin/assets/js/core/jquery.3.2.1.min.js')}}"></script>

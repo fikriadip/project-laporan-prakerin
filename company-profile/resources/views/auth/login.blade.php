@@ -1,7 +1,7 @@
-@extends('template.master_auth')
+@extends('partial.master_auth')
 
 @section('title_web')
-    Admin Login - Bimbel Primago    
+Admin Login - Bimbel Primago
 @endsection
 
 @section('content')
@@ -17,8 +17,7 @@
                         <span class="icon_focus">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="email" placeholder="Email" id="email" name="email"
-                            value="{{ old('email') }}" />
+                        <input type="email" placeholder="Email" id="email" name="email" value="{{ old('email') }}" />
                         <span class="focus-input100"></span>
                     </div>
                     <div class="input-field validate-input @error('password') alert-validate @enderror"

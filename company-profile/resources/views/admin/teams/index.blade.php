@@ -1,70 +1,57 @@
-@extends('template.master_admin')
+@extends('partial.master_admin')
 
 @section('title_web')
 Data Teams Landing Page - Bimbel Primago
 @endsection
 
-@section('title_content')
-Teams
-@endsection
-
-@section('breadcrumbs')
-<ul class="breadcrumbs">
-    <li class="nav-home">
-        <a href="#">
-            <i class="flaticon-home"></i>
-        </a>
-    </li>
-    <li class="separator">
-        <i class="flaticon-right-arrow"></i>
-    </li>
-    <li class="nav-item">
-        <a href="#">Data Teams</a>
-    </li>
-    <li class="separator">
-        <i class="flaticon-right-arrow"></i>
-    </li>
-    <li class="nav-item">
-        <a href="#">Kelola Data Teams</a>
-    </li>
-</ul>
-@endsection
-
-@section('content')
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title font-weight-bold">DataTable Teams
-                    <button type="button" data-toggle="modal" data-target="#ModalTeam"
-                        class="btn btn-primary float-right text-white"><i class="fas fa-plus mr-2"></i> TAMBAH DATA
-                        TEAMS</button>
-                </h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="tableTeam" class="display table table-striped table-bordered table-hover">
-                        <thead>
-                            <tr class="text-center">
-                                <th>No</th>
-                                <th>Nama</th>
-                                <th>Jabatan</th>
-                                <th>Foto Teams</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+@section('dashboard')
+<div class="panel-header bg-primary-gradient">
+    <div class="page-inner py-5">
+        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+            <div>
+                <h2 class="text-white pb-2 fw-bold"><i class="icon-people mr-2"></i> Teams Landing Page</h2>
+                <br>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Add Modal -->
-{{-- <div class="modal fade" id="ModalTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="page-inner mt--5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title font-weight-bold">Data Teams
+                        <button type="button" data-toggle="modal" data-target="#ModalTeam"
+                            class="btn btn-primary float-right btn-round text-white"><i class="fas fa-plus mr-2"></i>
+                            TAMBAH DATA
+                            TEAMS</button>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tableTeam" class="display table table-striped table-hover bg-light">
+                            <thead>
+                                <tr class="text-center text-primary">
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Jabatan</th>
+                                    <th>Foto Teams</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Modal -->
+    {{-- <div class="modal fade" id="ModalTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -76,36 +63,34 @@ Teams
             <div class="modal-body">
                 <h5 id="message" class="text-danger font-weight-bold"></h5>
                 <form action="{{ route('add.team') }}" method="POST" id="add-team" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <label for="nama">Masukkan Nama Teams</label>
-                        <input type="text" class="form-control" id="nama" name="nama">
-                        <span class="text-danger error-text nama_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="jabatan">Masukkan Jabatan Teams</label>
-                        <input type="text" class="form-control" id="jabatan" name="jabatan">
-                        <span class="text-danger error-text jabatan_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Masukkan Foto Teams</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="foto">Pilih Foto</label>
-                            <span class="text-danger error-text foto_error"></span>
-                        </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    @csrf
+    <div class="form-group">
+        <label for="nama">Masukkan Nama Teams</label>
+        <input type="text" class="form-control" id="nama" name="nama">
+        <span class="text-danger error-text nama_error"></span>
     </div>
+    <div class="form-group">
+        <label for="jabatan">Masukkan Jabatan Teams</label>
+        <input type="text" class="form-control" id="jabatan" name="jabatan">
+        <span class="text-danger error-text jabatan_error"></span>
+    </div>
+    <div class="form-group">
+        <label for="foto">Masukkan Foto Teams</label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es" onchange="previewFile(this)">
+            <label class="custom-file-label" for="foto">Pilih Foto</label>
+            <span class="text-danger error-text foto_error"></span>
+        </div>
+        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+    </div>
+    <div class="modal-footer">
+        <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btn_close">BATALKAN</button>
+        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
+    </div>
+    </form>
+</div>
+</div>
+</div>
 </div> --}}
 
 {{-- @include('admin.home.edit') --}}
@@ -123,37 +108,35 @@ Teams
             <div class="modal-body">
                 <h5 id="message" class="text-danger font-weight-bold"></h5>
                 <form action="{{ route('update.team') }}" method="POST" id="update-team" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <input type="hidden" name="team_id">
-                        <label for="nama">Edit Nama Teams</label>
-                        <input type="text" class="form-control" id="nama" name="nama">
-                        <span class="text-danger error-text nama_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="jabatan">Edit Jabatan Teams</label>
-                        <input type="text" class="form-control" id="jabatan" name="jabatan">
-                        <span class="text-danger error-text jabatan_error"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Edit Foto Teams</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto" lang="es"
-                                onchange="previewFile(this)">
-                            <label class="custom-file-label" for="foto">Pilih Foto</label>
-                            <span class="text-danger error-text foto_error"></span>
-                        </div>
-                        <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="reset" class="btn btn-danger" data-dismiss="modal"
-                            id="btn_close">BATALKAN</button>
-                        <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+@csrf
+<div class="form-group">
+    <input type="hidden" name="team_id">
+    <label for="nama">Edit Nama Teams</label>
+    <input type="text" class="form-control" id="nama" name="nama">
+    <span class="text-danger error-text nama_error"></span>
+</div>
+<div class="form-group">
+    <label for="jabatan">Edit Jabatan Teams</label>
+    <input type="text" class="form-control" id="jabatan" name="jabatan">
+    <span class="text-danger error-text jabatan_error"></span>
+</div>
+<div class="form-group">
+    <label for="foto">Edit Foto Teams</label>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="foto" name="foto" lang="es" onchange="previewFile(this)">
+        <label class="custom-file-label" for="foto">Pilih Foto</label>
+        <span class="text-danger error-text foto_error"></span>
     </div>
+    <img id="previewImg" style="max-width: 190px;" class="mt-3 shadow-sm">
+</div>
+<div class="modal-footer">
+    <button type="reset" class="btn btn-danger" data-dismiss="modal" id="btn_close">BATALKAN</button>
+    <button type="submit" id="saveBtn" class="btn btn-primary">SIMPAN</button>
+</div>
+</form>
+</div>
+</div>
+</div>
 </div> --}}
 
 
@@ -169,7 +152,8 @@ Teams
                     </div>
                     <div class="card-body mt-2">
                         <div class="modal-content">
-                            <form action="{{ route('add.team') }}" method="POST" id="add-team" enctype="multipart/form-data">
+                            <form action="{{ route('add.team') }}" method="POST" id="add-team"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nama" class="form-label h6 font-weight-bold">Masukkan Nama
@@ -218,7 +202,7 @@ Teams
                                         class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
                                         style="font-size: 18px">BATALKAN</button>
 
-                                        <button type="submit"
+                                    <button type="submit"
                                         class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
                                         style="font-size: 18px" id="saveBtn">SIMPAN</button>
                                 </center>
@@ -243,9 +227,10 @@ Teams
                     </div>
                     <div class="card-body mt-2">
                         <div class="modal-content">
-                            <form action="{{ route('update.team') }}" method="POST" id="update-team" enctype="multipart/form-data">
+                            <form action="{{ route('update.team') }}" method="POST" id="update-team"
+                                enctype="multipart/form-data">
                                 @csrf
-                        <input type="hidden" name="team_id">
+                                <input type="hidden" name="team_id">
                                 <div class="mb-3">
                                     <label for="nama" class="form-label h6 font-weight-bold">Edit Nama
                                         Team</label>
@@ -274,24 +259,26 @@ Teams
                                     <span class="text-danger error-text jabatan_error"></span>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="foto" class="form-label h6 font-weight-bold">Edit Foto Team - Kosongkan Bila Sama</label>
+                                    <label for="foto" class="form-label h6 font-weight-bold">Edit Foto Team - Kosongkan
+                                        Bila Sama</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">
                                                 <i class="fas fa-image ml-1"></i>
                                             </div>
                                         </div>
-                                        <input type="file" id="foto" class="form-control input-custom" name="foto"/>
+                                        <input type="file" id="foto" class="form-control input-custom" name="foto" />
                                     </div>
                                     <span class="text-danger error-text foto_error"></span>
                                 </div>
 
                                 <center>
-                                    <button type="reset"
+                                    <button type="button"
                                         class="btn btn-sm btn-reset text-white btn-block font-weight-bold mb-3 mt-4"
+                                        data-dismiss="modal" aria-label="Close"
                                         style="font-size: 18px">BATALKAN</button>
 
-                                        <button type="submit"
+                                    <button type="submit"
                                         class="btn btn-sm btn-save text-white btn-block font-weight-bold mb-3 mt-4"
                                         style="font-size: 18px" id="saveBtn">SIMPAN</button>
                                 </center>

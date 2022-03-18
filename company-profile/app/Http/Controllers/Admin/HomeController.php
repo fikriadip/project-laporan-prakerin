@@ -23,10 +23,18 @@ class HomeController extends Controller
             'deskripsi'=>'required|min:20',
             'image' => 'required|image|max:2048|mimes:jpg,png,jpeg',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter'
+            'judul.required' => 'Judul Tidak Boleh Kosong',
+            'subjudul.required' => 'Subjudul Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+            'image.required' => 'Foto Tidak Boleh Kosong',
+            'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+            'image.image' => 'Foto Harus Berupa Gambar',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'subjudul.max' => 'Subjudul Tidak Boleh Lebih Dari :max Karakter',
+            'image.max' => 'Foto Tidak Boleh Lebih Dari :max MB',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'subjudul.min' =>  'Subjudul Minimal :min Karakter',
+            'deskripsi.min' =>  'Deskripsi Minimal :min Karakter'
         ]);
 
         if(!$validator->passes()){
@@ -75,8 +83,8 @@ class HomeController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editHomeBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Home"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteHomeBtn" style="font-size: 16px; cursor: pointer;" title="Delete Home"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editHomeBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Home"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteHomeBtn" style="font-size: 16px; cursor: pointer;" title="Delete Home"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -107,10 +115,17 @@ public function updateHome(Request $request)
         'deskripsi'=>'required|min:20',
         'image' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter'
+        'judul.required' => 'Judul Tidak Boleh Kosong',
+        'subjudul.required' => 'Subjudul Tidak Boleh Kosong',
+        'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+        'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+        'image.image' => 'Foto Harus Berupa Gambar',
+        'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+        'subjudul.max' => 'Subjudul Tidak Boleh Lebih Dari :max Karakter',
+        'image.max' => 'Foto Tidak Boleh Lebih Dari :max MB',
+        'judul.min' =>  'Judul Minimal :min Karakter',
+        'subjudul.min' =>  'Subjudul Minimal :min Karakter',
+        'deskripsi.min' =>  'Deskripsi Minimal :min Karakter'
     ]);
 
     if(!$validator->passes()){

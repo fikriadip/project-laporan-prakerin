@@ -78,7 +78,7 @@
 .input-group-text {
     border-bottom-left-radius: 100px;
     border-top-left-radius: 100px;
-    background-color: #4070f4;
+    background-color: #ec4858;
     color: #ffffff;
 }
 
@@ -108,8 +108,8 @@ input[type="file"]::-webkit-file-upload-button {
 input[type="file"]::before {
     content: 'Pilih Foto';
     padding: 0.2rem 1rem;
-    background-color: #4070f4;
-    border: 2px solid #4070f4;
+    background-color: #ff2626;
+    border: 2px solid #ff2626;
     font-size: 0.90rem;
     color: #fff;
     line-height: 1;
@@ -122,8 +122,8 @@ input[type="file"]::before {
 }
 
 input[type="file"]:hover::before {
-    background-color: #ff2626;
-    border: 2px solid #ff2626;
+    background-color: #4070f4;
+    border: 2px solid #4070f4;
     color: #fff;
 }
 

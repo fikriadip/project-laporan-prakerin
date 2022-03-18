@@ -1,4 +1,4 @@
-@extends('template.master_admin')
+@extends('partial.master_admin')
 
 @section('title_web')
 Detail Data Details Landing Page - Bimbel Primago

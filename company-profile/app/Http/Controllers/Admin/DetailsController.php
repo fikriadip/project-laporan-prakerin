@@ -27,10 +27,31 @@ class DetailsController extends Controller
             'paragraf'=>'required|min:40|max:320',
             'image' => 'required|image|max:2048|mimes:jpg,png,jpeg',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter'
+            'judul.required' => 'Judul Tidak Boleh Kosong',
+            'subjudul.required' => 'Subjudul Tidak Boleh Kosong',
+            'penjelasan1.required' => 'Penjelasan 1 Tidak Boleh Kosong',
+            'penjelasan2.required' => 'Penjelasan 2 Tidak Boleh Kosong',
+            'penjelasan3.required' => 'Penjelasan 3 Tidak Boleh Kosong',
+            'penjelasan4.required' => 'Penjelasan 4 Tidak Boleh Kosong',
+            'paragraf.required' => 'Paragraf Tidak Boleh Kosong',
+            'image.required' => 'Foto Tidak Boleh Kosong',
+            'image.mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+            'image.image' => 'Foto Harus Berupa Gambar',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'subjudul.max' => 'Subjudul Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan1.max' => 'Penjelasan 1 Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan2.max' => 'Penjelasan 2 Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan3.max' => 'Penjelasan 3 Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan4.max' => 'Penjelasan 4 Tidak Boleh Lebih Dari :max Karakter',
+            'paragraf.max' => 'Paragraf Tidak Boleh Lebih Dari :max Karakter',
+            'image.max' => 'Foto Tidak Boleh Lebih Dari :max MB',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'subjudul.min' =>  'Subjudul Minimal :min Karakter',
+            'penjelasan1.min' =>  'Penjelasan 1 Minimal :min Karakter',
+            'penjelasan2.min' =>  'Penjelasan 2 Minimal :min Karakter',
+            'penjelasan3.min' =>  'Penjelasan 3 Minimal :min Karakter',
+            'penjelasan4.min' =>  'Penjelasan 4 Minimal :min Karakter',
+            'paragraf.min' =>  'Paragraf Minimal :min Karakter'
         ]);
 
         if(!$validator->passes()){
@@ -84,9 +105,9 @@ class DetailsController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editDetailsBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Details"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<a href="../admin/show-details/'.$row->id.'" class="dropdown-item mr-2" style="font-size: 16px; cursor: pointer;" title="Detail Data Details"><i class="fas fa-eye text-dark mr-2"></i>Detail</a>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteDetailsBtn" style="font-size: 16px; cursor: pointer;" title="Delete Details"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editDetailsBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Details"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<a href="../admin/show-details/'.$row->id.'" class="dropdown-item mr-2" style="font-size: 16px; cursor: pointer;" title="Detail Data Details"><i class="icon-eye text-dark mr-2"></i>Detail</a>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteDetailsBtn" style="font-size: 16px; cursor: pointer;" title="Delete Details"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -128,10 +149,30 @@ public function updateDetails(Request $request)
         'paragraf'=>'required|min:40|max:800',
         'image' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'mimes' => ':attribute Harus Berupa jpg, png, jpeg',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter'
+        'judul.required' => 'Judul Tidak Boleh Kosong',
+            'subjudul.required' => 'Subjudul Tidak Boleh Kosong',
+            'penjelasan1.required' => 'Penjelasan 1 Tidak Boleh Kosong',
+            'penjelasan2.required' => 'Penjelasan 2 Tidak Boleh Kosong',
+            'penjelasan3.required' => 'Penjelasan 3 Tidak Boleh Kosong',
+            'penjelasan4.required' => 'Penjelasan 4 Tidak Boleh Kosong',
+            'paragraf.required' => 'Paragraf Tidak Boleh Kosong',
+            'image.mimes' => 'Foto Harus Berupa jpg, png, jpeg',
+            'image.image' => 'Foto Harus Berupa Gambar',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'subjudul.max' => 'Subjudul Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan1.max' => 'Penjelasan 1 Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan2.max' => 'Penjelasan 2 Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan3.max' => 'Penjelasan 3 Tidak Boleh Lebih Dari :max Karakter',
+            'penjelasan4.max' => 'Penjelasan 4 Tidak Boleh Lebih Dari :max Karakter',
+            'paragraf.max' => 'Paragraf Tidak Boleh Lebih Dari :max Karakter',
+            'image.max' => 'Foto Tidak Boleh Lebih Dari :max MB',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'subjudul.min' =>  'Subjudul Minimal :min Karakter',
+            'penjelasan1.min' =>  'Penjelasan 1 Minimal :min Karakter',
+            'penjelasan2.min' =>  'Penjelasan 2 Minimal :min Karakter',
+            'penjelasan3.min' =>  'Penjelasan 3 Minimal :min Karakter',
+            'penjelasan4.min' =>  'Penjelasan 4 Minimal :min Karakter',
+            'paragraf.min' =>  'Paragraf Minimal :min Karakter'
     ]);
 
     if(!$validator->passes()){

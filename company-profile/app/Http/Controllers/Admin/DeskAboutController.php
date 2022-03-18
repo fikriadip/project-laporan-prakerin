@@ -21,9 +21,12 @@ class DeskAboutController extends Controller
             'judul'=>'required|min:14|max:60',
             'deskripsi'=>'required|min:50|max:300',
         ],[
-            'required' => ':attribute Tidak Boleh Kosong',
-            'max' => ':attribute Tidak Boleh Lebih Dari :max',
-            'min' =>  ':attribute Minimal :min Karakter'
+            'judul.required' => 'Judul Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'deskripsi.max' => 'Deskripsi Tidak Boleh Lebih Dari :max Karakter',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'deskripsi.min' =>  'Deskripsi Minimal :min Karakter'
         ]);
 
         if(!$validator->passes()){
@@ -57,8 +60,8 @@ class DeskAboutController extends Controller
                 $table .=    '<i class="fas fa-list-ul"></i>';
                 $table .= '</a>';
                 $table .=' <div class="dropdown-menu dropdown-menu-right">';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editDeskAboutBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Desk About"><i class="fas fa-edit mr-2" style="color: #007bff;"></i>Edit</button>';
-                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteDeskAboutBtn" style="font-size: 16px; cursor: pointer;" title="Delete Desk About"><i class="fas fa-times-circle text-danger mr-2"></i>Hapus</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="editDeskAboutBtn" style="font-size: 16px; cursor: pointer;" title="Edit Data Desk About"><i class="icon-note mr-2" style="color: #007bff;"></i>Edit</button>';
+                $table .=   '<button data-id="'.$row->id.'" class="dropdown-item mr-2" id="deleteDeskAboutBtn" style="font-size: 16px; cursor: pointer;" title="Delete Desk About"><i class="icon-trash text-danger mr-2"></i>Hapus</button>';
                 $table .= '</div>';
                 $table .= '</div>';
                 $table .= '</div>';
@@ -87,9 +90,12 @@ public function updateDeskAbout(Request $request)
         'judul'=>'required|min:14|max:60',
         'deskripsi'=>'required|min:50|max:300',
     ],[
-        'required' => ':attribute Tidak Boleh Kosong',
-        'max' => ':attribute Tidak Boleh Lebih Dari :max',
-        'min' =>  ':attribute Minimal :min Karakter'
+        'judul.required' => 'Judul Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+            'judul.max' => 'Judul Tidak Boleh Lebih Dari :max Karakter',
+            'deskripsi.max' => 'Deskripsi Tidak Boleh Lebih Dari :max Karakter',
+            'judul.min' =>  'Judul Minimal :min Karakter',
+            'deskripsi.min' =>  'Deskripsi Minimal :min Karakter'
     ]);
 
     if(!$validator->passes()){
