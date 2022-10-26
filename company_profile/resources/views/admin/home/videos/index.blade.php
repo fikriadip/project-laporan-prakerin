@@ -1,7 +1,7 @@
 @extends('partial.master_admin')
 
 @section('title_web')
-Data Video Landing Page - Bimbel Primago
+Data Video Landing Page - PT Primago
 @endsection
 
 @section('dashboard')

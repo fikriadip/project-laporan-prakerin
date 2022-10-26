@@ -15,10 +15,10 @@
                                   sunt quaerat alias doloremque consequuntur cupiditate, rerum ut</p>
                               <div class="links">
                                   <a class="link-underline" href="mailto:hello@orions.com">
-                                      <span>bimbelprimago@bimbel.com</span>
+                                      <span>primago@primago.com</span>
                                   </a>
-                                  <a class="link-underline" href="tel:+1-234-567-890">
-                                      <span>087820020062</span>
+                                  <a class="link-underline" href="tel:+62">
+                                      <span>081234567890</span>
                                   </a>
                               </div>
                           </div>
@@ -113,7 +113,7 @@
               <div class="row">
                   <div class="col-lg-12 offset-lg-0 col-md-8 offset-md-2 col-10 offset-1">
                       <div class="footer-copyright c-grey-1">
-                          <h6>&copy; BIMBELPRIMAGO</h6>
+                          <h6>&copy; PT. PRIMAGO</h6>
                       </div>
                   </div>
               </div>

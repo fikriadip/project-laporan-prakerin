@@ -1,7 +1,7 @@
 @extends('partial.master_admin')
 
 @section('title_web')
-Data Contact Landing Page - Bimbel Primago
+Data Contact Landing Page - PT Primago
 @endsection
 
 @section('dashboard')

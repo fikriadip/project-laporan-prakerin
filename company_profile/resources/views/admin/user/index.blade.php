@@ -1,7 +1,7 @@
 @extends('partial.master_admin')
 
 @section('title_web')
-Data User - Bimbel Primago
+Data User - PT Primago
 @endsection
 
 @section('dashboard')

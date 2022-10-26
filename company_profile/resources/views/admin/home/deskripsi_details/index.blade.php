@@ -1,7 +1,7 @@
 @extends('partial.master_admin')
 
 @section('title_web')
-Data Deskripsi Landing Page - Bimbel Primago
+Data Deskripsi Landing Page - PT Primago
 @endsection
 
 @section('dashboard')

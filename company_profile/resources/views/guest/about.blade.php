@@ -1,7 +1,7 @@
 @extends('partial.master_guest')
 
 @section('title_web')
-About - Bimbel Primago
+About - PT Primago
 @endsection
 
 @section('page-header-inner')

@@ -125,42 +125,21 @@ class UserController extends Controller
         $user_id = $request->user_id;
 
         $validator = Validator::make($request->all(),[
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$user_id,
-            'photo' => 'sometimes|image|max:2048|mimes:jpg,png,jpeg',
+            'username' => 'required|max:128',
+            // 'password' => 'required|min:5|max:8',
+            // 'createtime' => 'required|date_format:d-m-Y'
         ],[
-            'name.required' => 'Nama User Tidak Boleh Kosong',
-            'email.required' => 'Email User Tidak Boleh Kosong',
-            'mimes' => 'Foto Harus Berupa jpg, png, jpeg',
-            'photo.max' => 'Foto Maksimal :max MB',
-            'photo.image' => 'Foto Harus Berupa Gambar',
-            'email.unique' => 'Alamat Email Sudah Digunakan'
+            'username.required' => 'Username Tidak Boleh Kosong',
+            'username.max' => 'Username Tidak Boleh Lebih Dari :max Karakter',
         ]);
 
         if(!$validator->passes()){
             return response()->json(['code' => 0, 'error' => $validator->errors()->toArray()]);
         } else {
 
-            if($request->file('photo') == "") {
-
                 $user = User::find($user_id)->update([
-                    'name' => $request->name,
-                    'email' => $request->email,
+                    'username' => $request->username,
                 ]);
-
-            } else {    
-
-                if ($request->photo) {
-
-                    $new_photo = base64_encode(file_get_contents($request->photo));
-
-                    $user = User::find($user_id)->update([
-                        'name' => $request->name,
-                        'email' => $request->email,
-                        'photo' => $new_photo
-                    ]);
-                }
-            }
 
             if($user){
                 return response()->json(['code' => 1, 'status' => 'BERHASIL', 'message' => 'Data User Berhasil Di Update']);

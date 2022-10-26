@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Admin Bimbel',
-            'email' => 'adminbimbel@primago.com',
+            'name' => 'Admin Primago',
+            'email' => 'admin@primago.com',
             'photo' => 'avatar_default.png',
             'password' => Hash::make('admin123'),
             'created_at' => Carbon::now()

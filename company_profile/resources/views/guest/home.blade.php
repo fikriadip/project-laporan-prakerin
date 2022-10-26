@@ -12,7 +12,7 @@
     <!--
     title tag
     -->
-    <title>Bimbel Primago</title>
+    <title>PT Primago</title>
 
     <!--
     favicon
